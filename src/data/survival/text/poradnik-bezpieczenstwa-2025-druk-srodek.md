@@ -177,7 +177,7 @@ Cyber.Mil z klasą czy Legię Akademicką. Jeżeli po ukończeniu studiów
 chcesz zostać żołnierzem zawodowym, możesz starać się o stypendium
 wojskowe na czas nauki.
 
-S I ŁY Z B ROJ N E RP SĄ GOTOW E DO R E ALIZ AC J I TRZECH RO D ZA JÓW M IS JI:
+S I ŁY Z B ROJ N E RP SĄ GOTOW E DO R E ALIZ AC J I TRZECH RO D ZA JÓW M IS JI:
 
 A obrona państwa i przeciwstawianie się agresji w ramach sojuszy,
 A udział w procesie stabilizacji sytuacji międzynarodowej, kryzysowej
@@ -453,7 +453,7 @@ raz na kilka miesięcy i sprawdzaj terminy przydatności.
 Przygotowanie
 Przygotuj swoje otoczenie
 
-Z A PA SY DOM OW E N A MINIMU M 3 DN I
+Z A PA SY DOM OW E N A MINIMU M 3 DN I
 
 zapasy
 woda żywności
@@ -492,7 +492,7 @@ dezynfekujące, worki na śmieci, wiadro z pokrywą.
 Przygotowanie
 Przygotuj swoje otoczenie
 
-Z A PA SY DOM OW E N A MINIMU M 3 DN I
+Z A PA SY DOM OW E N A MINIMU M 3 DN I
 
 ◻ Oświetlenie i łączność: latarka i radio na baterie
 lub na korbkę, naładowany telefon, ładowarka,
@@ -700,7 +700,7 @@ Pożar
 
 Reagowanie
 Pożar
-I N ST R U KCJA G ASZ E NIA P OŻ AR ÓW P ODR ĘCZN YM S PRZĘTEM GA Ś NICZYM 
+I N ST R U KCJA G ASZ E NIA P OŻ AR ÓW P ODR ĘCZN YM S PRZĘTEM GA Ś NICZYM 
 
 Co Jakiej Czym
 się pali gaśnicy użyć gasić
@@ -833,7 +833,7 @@ A Niebieska flaga – potrzebuję żywności i wody.
 Flaga może być zrobiona np. z ubrań.
 
 Śledź informacje o stanach wód na stronach:
-A wody.gov.pl
+A wody.gov.pl
 isok.gov.pl
 hydro.imgw.pl
 
@@ -1012,7 +1012,7 @@ pod ręką, np. torebki, plecaka, krzesła.
 
 Nie bądź bierny!
 
-WA Ż N E
+WA Ż N E
 
 Dzwoń tylko, jeśli naprawdę musisz –
 nie blokuj sieci. Nie dzwoń do osób w zagrożeniu
@@ -1271,227 +1271,227 @@ Regularnie go aktualizuj i ćwicz z domownikami.
 ---
 
 Plan na kryzys
-DA N E KON TA K TOW E NA W YPADE K K RYZ YSU 
+DA N E KON TA K TOW E NA W YPADE K K RYZ YSU 
 
 Imię Nazwisko Telefon E-mail
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
 44
 
 ---
 
 Plan na kryzys
-MIEJS CE, W KTÓRYM SIĘ SP OTK AMY, J E ŚLI ZOSTANIEMY RO ZD ZIELENI
+MIEJS CE, W KTÓRYM SIĘ SP OTK AMY, J E ŚLI ZOSTANIEMY RO ZD ZIELENI
 
 W najbliższej okolicy
 
 Lokalizacja 1 Adres Osoba do kontaktu Telefon
 
-   
+- …
 
 Lokalizacja 2
 
-   
+- …
 
 Lokalizacja 3
 
-   
+- …
 
 Poza miejscowością zamieszkania
 
 Lokalizacja 1 Adres Osoba do kontaktu Telefon
 
-   
+- …
 
 Lokalizacja 2
 
-   
+- …
 
 Lokalizacja 3
 
-   
+- …
 
 Notatki
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 45
 
 ---
 
 Plan na kryzys
-CH OROBY, A L E RGIE , P R Z YJ MOWAN E STALE LE K I
+CH OROBY, A L E RGIE , P R Z YJ MOWAN E STALE LE K I
 
 Imię i nazwisko Choroby Alergie Leki
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-L I STA NIEZBĘDN YC HRZECZYI GDZ IE J E TR Z YMAM Y
+L I STA NIEZBĘDN YC HRZECZYI GDZ IE J E TR Z YMAM Y
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 46
 
 ---
 
 Plan na kryzys
-WA ŻNETELEF ON Y
+WA ŻNETELEF ON Y
 
 np. lekarz rodzinny, opiekunowie dzieci, seniorów, osób z niepełnosprawnościami, sąsiedzi,
 znajomi, szkoła, praca, przychodnia.
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 47
 
 ---
 
 Plan na kryzys
-N OTAT K I 
+N OTAT K I 
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 48

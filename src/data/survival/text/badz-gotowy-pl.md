@@ -65,8 +65,6 @@ Lista kontrolna
 Plecak ewakuacyjny - str. 33
 Najważniejsze numery - str. 34
 
-str.1
-
 ---
 
 1. KRYZYS I WOJNA
@@ -97,7 +95,6 @@ militarne, lecz łączące obszary
 polityki wewnętrznej i zagranicznej,
 gospodarki, działań militarnych oraz
 informacyjnych.
-str.2
 
 ---
 
@@ -112,8 +109,6 @@ Zwiększasz szansę na
 zapewnienie sobie Ograniczysz szkody
 i swoim bliskim materialne
 bezpieczeństwa
-
-str.3 str.3
 
 ---
 
@@ -149,7 +144,7 @@ przygotuj plecak ewakuacyjny
 (więcej na stronie 12) oraz
 domowe zapasy do przetrwania
 min. 7 dni bez dostępu do wody,
-prądu i jedzenia. str.4
+prądu i jedzenia.
 
 ---
 
@@ -187,8 +182,6 @@ Obserwuj kanały komunikacji administracji
 państwowej, służb porządkowych i organów
 bezpieczeństwa państwa.
 
-str.5
-
 ---
 
 JAK SIĘ ZACHOWAĆ
@@ -219,7 +212,6 @@ policji, straży i pogotowia oraz może
 zadecydować o życiu i zdrowiu setek
 ludzi. Jeżeli chcesz ich poinformować
 o tym, że jesteś bezpieczny - wyślij SMS.
-str.6
 
 ---
 
@@ -232,8 +224,6 @@ alarmowych – m.in. środki masowego przekazu,
 syreny, dzwonki, megafony oraz dzwony kościelne.
 
 ALERT
-
-str.7
 
 ---
 
@@ -259,7 +249,7 @@ i prądu;
 3. Jeżeli to możliwe, śledź informacje na stronach
 rządowych (np. Rządowego Centrum Bezpieczeństwa -
 www.gov.pl/rcb);
-4. Wykonuj polecenia kierownictwa i służb. str.8
+4. Wykonuj polecenia kierownictwa i służb.
 
 ---
 
@@ -285,8 +275,6 @@ przerwane czynności;
 środków do uszczelnienia drzwi i okien;
 
 3. Stosuj się do poleceń służb.
-
-str.9 str.9
 
 ---
 
@@ -322,7 +310,7 @@ ewakuacji;
 
 Zorganizuj schronienie dla osób,
 które ewakuowały się
-z zagrożonego terenu. str.10
+z zagrożonego terenu.
 
 ---
 
@@ -349,8 +337,6 @@ Film dot. przygotowania plecaka ewakuacyjnego
 realizowany w ramach Akademii Bezpieczeństwa RCB
 znajdziesz pod adresem:
 https://www.youtube.com/watch?v=cc0zF6CiSjI&t=425s
-
-str.11 str.11
 
 ---
 
@@ -436,7 +422,6 @@ będziesz
 opaskamusiał
 zaciskowa
 kupić
-str.12
 jedzenie i paliwo.
 
 ---
@@ -452,8 +437,6 @@ domu, pracy i do samochodu.
 
 Upewnij się, że twoi bliscy wiedzą, gdzie znajdują się
 zestawy ewakuacyjne.
-
-str.13
 
 ---
 
@@ -484,8 +467,6 @@ najlepiej schronić się
 w pomieszczeniu
 z dala od okien i drzwi.
 
-str.14
-
 ---
 
 Ewakuacja
@@ -498,7 +479,6 @@ dobrowolny lub przymusowy.
 Jak się do niej przygotować?
 
 Działania prewencyjne:
-str.11
 
 utrzymuj rezerwy paliwa - jeżeli to
 możliwe trzymaj w garażu kanister
@@ -524,7 +504,6 @@ do którego każdy będzie mógł bez
 przeszkód dotrzeć).
 
 s
-str.15
 
 ---
 
@@ -563,8 +542,6 @@ ewakuację, podróżuj z rodziną
 jednym samochodem. Ograniczysz
 ryzyko rozdzielenia.
 
-str.16
-
 ---
 
 Ewakuacja
@@ -572,7 +549,6 @@ J A K Ć
 S I Ę ZACHOWA
 
 Droga ewakuacji:
-str.11
 wykonuj polecenia służb
 kierujących ewakuacją;
 
@@ -596,8 +572,6 @@ wojskowe, ale także
 elektrownie, sieci
 przesyłu gazu, wieże
 telefoniczne).
-
-str.17 str.17
 
 ---
 
@@ -635,8 +609,6 @@ Wojsko Polskie oraz
 siły sojusznicze mogą prowadzić
 działania także w Twojej miejscowości.
 
-str.18
-
 ---
 
 JAK SIĘ ZACHOWAĆ
@@ -657,8 +629,6 @@ Wchodząc do budynku zapamiętuj układ
 pomieszczeń i możliwe drogi ewakuacji – wyrób
 w sobie ten nawyk. W przypadku wystrzałów
 będziesz znał najlepszą drogę ucieczki.
-
-str.19 str.19
 
 ---
 
@@ -694,8 +664,6 @@ napastnika – to on jest „tym złym”.
 Twoja bierność może zadecydować o
 życiu wielu innych osób.
 
-str.20
-
 ---
 
 JAK SIĘ ZACHOWAĆ
@@ -722,7 +690,7 @@ Padnij na ziemie i zakryj głowę rękami;
 Znajdź schronienie. Nie spiesz się z opuszczeniem
 schronu. Pomóż poszkodowanym w ewakuacji
 w bezpieczne miejsce. Nie korzystaj z wind i kieruj się
-str.21 do wyjścia ewakuacyjnego. str.21
+do wyjścia ewakuacyjnego.
 
 ---
 
@@ -739,7 +707,6 @@ choroba i nagła śmierć.
 C B
 
 R N
-str.22
 
 ---
 
@@ -769,8 +736,6 @@ Nie wychodź bez powodu na zewnątrz;
 Zostań w budynku. Zamknij okna, drzwi i wyłącz
 wentylatory i klimatyzatory.
 
-str.23 str.23
-
 ---
 
 JAK SIĘ ZACHOWAĆ
@@ -799,7 +764,6 @@ swojego przebywania;
 
 Zostań w budynku. Zamknij okna, drzwi i wyłącz
 wentylatory i klimatyzatory.
-str.24
 
 ---
 
@@ -815,8 +779,6 @@ Aby ochronić się przed promieniowaniem warto
 ukryć się w piwnicy lub pomieszczeniu z możliwie
 grubymi ścianami – każdy centymetr dodatkowej
 ochrony powoduje, że promieniowanie słabnie.
-
-str.25 str.25
 
 ---
 
@@ -852,8 +814,6 @@ do zaleceń;
 
 Pozostań wewnątrz przynajmniej przez 24 godziny,
 chyba że służby udzielą innych instrukcji.
-
-str.26
 
 ---
 
@@ -895,8 +855,6 @@ mogą nie działać!);
 Grill ogrodowy może pomóc w przygotowaniu
 potraw i służyć jako awaryjne palenisko.
 
-str.27
-
 ---
 
 JAK SIĘ ZACHOWAĆ
@@ -932,7 +890,7 @@ Jeśli żołnierz obcy będzie chciał
 skontrolować dokumenty – daj mu je.
 Nie odwracaj wzroku. Stój nieruchomo.
 Postępuj zgodnie z jego poleceniami.
-Nie rozglądaj, nie rozmawiaj z innymi. str.28
+Nie rozglądaj, nie rozmawiaj z innymi.
 
 ---
 
@@ -971,8 +929,6 @@ będzie Wam raźniej i
 zapewnicie sobie większą
 szansę na obronę.
 
-str.29 str.29
-
 ---
 
 JAK SIĘ ZACHOWAĆ
@@ -1004,8 +960,6 @@ Odpoczywaj i dużo śpij;
 
 Uciekaj dopiero wtedy, gdy jesteś
 pewien, że ci się uda.
-
-str.30
 
 ---
 
@@ -1050,8 +1004,6 @@ poszkodowanych, rodzaj obrażeń, swoje dane;
 polecenia;
 
 8. Przystąp do czynności ratowniczych.
-
-str.31 str.31
 
 ---
 
@@ -1098,7 +1050,6 @@ krążeniowo-oddechowej - Pamiętaj!
 
 30 uciśnięć klatki piersiowej 2 .
 wdechy ratunkowe
-str.32
 
 ---
 
@@ -1140,8 +1091,6 @@ Komplet sztućców
 Kurtka
 przeciwdeszczowa
 
-str.33 str.33
-
 ---
 
 Najważniejsze Ć
@@ -1156,5 +1105,3 @@ Numer alarmowy 112
 
 Najbli sza ż
 Komenda Policji
-
-str.34

@@ -60,7 +60,7 @@ PL AN
 
 ---
 
-TELEF ON YALARM OWE  GDZ IE S ZUKAĆ WS PA RCIA 
+TELEF ON YALARM OWE  GDZ IE S ZUKAĆ WS PA RCIA 
 
 112 800 70 22 22
 centrum wsparcia dla osób
@@ -283,7 +283,7 @@ Cyber.Mil z klasą czy Legię Akademicką. Jeżeli po ukończeniu studiów
 chcesz zostać żołnierzem zawodowym, możesz starać się o stypendium
 wojskowe na czas nauki.
 
-SI ŁY Z B R OJ N E RP S Ą GOTOW E DO R E ALIZ AC J I TR ZECH RO D ZA JÓW MIS JI:
+SI ŁY Z B R OJ N E RP S Ą GOTOW E DO R E ALIZ AC J I TR ZECH RO D ZA JÓW MIS JI:
 
 A obrona państwa i przeciwstawianie się agresji w ramach sojuszy,
 A udział w procesie stabilizacji sytuacji międzynarodowej, kryzysowej
@@ -569,7 +569,7 @@ A gov.pl/rcb/poradnik-bezpiecznych-zachowan
 Przygotowanie
 Przygotuj swoje otoczenie
 
-ZAPA SY DOM OW E N A MIN IMU M 3 DN I
+ZAPA SY DOM OW E N A MIN IMU M 3 DN I
 
 zapasy
 woda żywności
@@ -608,7 +608,7 @@ dezynfekujące, worki na śmieci, wiadro z pokrywą.
 Przygotowanie
 Przygotuj swoje otoczenie
 
-ZAPA SY DOM OW E N A MIN IMU M 3 DN I
+ZAPA SY DOM OW E N A MIN IMU M 3 DN I
 
 ◻ Oświetlenie i łączność: latarka i radio na baterie
 lub na korbkę, naładowany telefon, ładowarka,
@@ -810,7 +810,7 @@ Pożar
 
 Reagowanie
 Pożar
-I N ST RU KCJA GASZ ENIA P OŻ AR ÓW P ODR ĘCZN YM SP R ZĘTEM GA Ś NICZYM 
+I N ST RU KCJA GASZ ENIA P OŻ AR ÓW P ODR ĘCZN YM SP R ZĘTEM GA Ś NICZYM 
 
 Co Jakiej Czym
 się pali gaśnicy użyć gasić
@@ -943,7 +943,7 @@ A Niebieska flaga – potrzebuję żywności i wody.
 Flaga może być zrobiona np. z ubrań.
 
 Śledź informacje o stanach wód na stronach:
-A wody.gov.pl
+A wody.gov.pl
 isok.gov.pl
 hydro.imgw.pl
 
@@ -1126,7 +1126,7 @@ pod ręką, np. torebki, plecaka, krzesła.
 
 Nie bądź bierny!
 
-WA Ż N E
+WA Ż N E
 
 Dzwoń tylko, jeśli naprawdę musisz –
 nie blokuj sieci. Nie dzwoń do osób w zagrożeniu
@@ -1386,189 +1386,189 @@ Regularnie go aktualizuj i ćwicz z domownikami.
 ---
 
 Plan na kryzys
-DAN E KON TA K TOW ENAW YPADE K K RYZ YSU 
+DAN E KON TA K TOW ENAW YPADE K K RYZ YSU 
 
 Imię Nazwisko Telefon E-mail
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
 48
 
 ---
 
 Plan na kryzys
-MIEJS CE, W KTÓRY M SIĘ SP OTK AMY, J E ŚLI ZOSTAN IEM Y RO ZD ZIELENI
+MIEJS CE, W KTÓRY M SIĘ SP OTK AMY, J E ŚLI ZOSTAN IEM Y RO ZD ZIELENI
 
 W najbliższej okolicy
 
 Lokalizacja 1 Adres Osoba do kontaktu Telefon
 
-   
+- …
 
 Lokalizacja 2
 
-   
+- …
 
 Lokalizacja 3
 
-   
+- …
 
 Poza miejscowością zamieszkania
 
 Lokalizacja 1 Adres Osoba do kontaktu Telefon
 
-   
+- …
 
 Lokalizacja 2
 
-   
+- …
 
 Lokalizacja 3
 
-   
+- …
 
 Notatki
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 49
 
 ---
 
 Plan na kryzys
-C H OR OBY, A L E RG I E, P R Z YJ MOWAN E STALE LE K I
+C H OR OBY, A L E RG I E, P R Z YJ MOWAN E STALE LE K I
 
 Imię i nazwisko Choroby Alergie Leki
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-   
+- …
 
-L I STA N I EZ B ĘDN YCH RZECZYI GDZ IE J E TR Z YMAMY
+L I STA N I EZ B ĘDN YCH RZECZYI GDZ IE J E TR Z YMAMY
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 50
 
 ---
 
 Plan na kryzys
-WA ŻNETELEF ON Y 
+WA ŻNETELEF ON Y 
 
 np. lekarz rodzinny, opiekunowie dzieci, seniorów, osób z niepełnosprawnościami, sąsiedzi,
 znajomi, szkoła, praca, przychodnia.
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
-
+- …
 
 51
 
 ---
 
-DEKA LOG BEZPIE CZ E ŃSTWA
+DEKA LOG BEZPIE CZ E ŃSTWA
 
 1 Korzystaj z wiarygodnych źródeł informacji,
 przede wszystkim rządowych.
@@ -1590,7 +1590,7 @@ z imieniem, nazwiskiem i telefonem kontaktowym.
 
 ---
 
-SYGN A ŁY ALARM OWE 
+SYGN A ŁY ALARM OWE 
 
 Ogłoszenie alarmu
 ciągły, modulowany dźwięk syreny trwający 3 minuty
@@ -1598,7 +1598,7 @@ ciągły, modulowany dźwięk syreny trwający 3 minuty
 Odwołanie alarmu
 ciągły, jednostajny dźwięk syreny trwający 3 minuty
 
-BĄ DŹNABI EŻ ĄCO
+BĄ DŹNABI EŻ ĄCO
 
 Pobierz aplikację RSO
 Regionalny System Ostrzegania (RSO) to bezpłatna aplikacja mobilna, która

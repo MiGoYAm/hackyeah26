@@ -15,7 +15,7 @@ Przeczytaj, przećwicz i zachowaj!
 ---
 
 Spis treści
-GD ZIE S ZUKAĆ WS PA RCIA  TELEFO NY A LA RMOWE D EKALOG BEZ PI EC Z EŃST WA SYG N A ŁY A L A RM OW E 
+GD ZIE S ZUKAĆ WS PA RCIA  TELEFO NY A LA RMOWE D EKALOG BEZ PI EC Z EŃST WA SYG N A ŁY A L A RM OW E 
 
 1 Twoje przygotowanie ma znaczenie
 WSTĘ P 800 70 22 22 112 Korzystaj z wiarygodnych źródeł informacji, Ogłoszenie alarmu
@@ -46,7 +46,7 @@ dziecięcy telefon zaufania 4 Skompletuj apteczkę z lekami.
 Rzecznika Praw Dziecka
 policja Naucz się udzielać pierwszej pomocy.
 24 Bezpieczeństwo w tłumie
-BĄDŹ NABIEŻ ĄCO 
+BĄDŹ NABIEŻ ĄCO 
 25 Schronienia 994 5 Regularnie rób lub zlecaj przeglądy instalacji:
 Jak wezwać pomoc pogotowie wodno-kanalizacyjne elektrycznej, gazowej, wentylacyjnej i kominowej.
 26 Pożar Pobierz aplikację RSO
