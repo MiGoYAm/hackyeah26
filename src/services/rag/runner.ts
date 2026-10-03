@@ -42,7 +42,10 @@ const generateAsync = wrapAsync(runGeneration);
 export type KnowledgeRunner = Awaited<ReturnType<typeof createKnowledgeRunner>>;
 
 export async function createKnowledgeRunner(config: LLMModel) {
-  const tokenizerConfig = llm.parseTokenizerConfig(JSON.parse(await new File(config.tokenizerConfigPath).text()));
+  // The downloader returns a plain path; on Android File accepts only file:// URIs.
+  const tokenizerConfigUri = config.tokenizerConfigPath.startsWith('file://')
+    ? config.tokenizerConfigPath : `file://${config.tokenizerConfigPath}`;
+  const tokenizerConfig = llm.parseTokenizerConfig(JSON.parse(await new File(tokenizerConfigUri).text()));
   const tokenizer = await wrapAsync(nlp.loadTokenizer)(config.tokenizerPath);
   const preprocessor = llm.createChatPreprocessor({ chatTemplate: tokenizerConfig.chatTemplate });
   let runner: llm.LLMRunner;

@@ -1,4 +1,4 @@
-import { OPSQLiteVectorStore } from '@react-native-rag/op-sqlite';
+import { open, type DB } from '@op-engineering/op-sqlite';
 
 import manifest from '../../../assets/offline/rag/manifest.json';
 import { prepareKnowledgeAssets } from './assets';
@@ -58,48 +58,52 @@ export async function acquireRetrieval() {
 export async function createRetrieval() {
   const paths = await prepareKnowledgeAssets();
   const embeddings = new PolishEmbeddings(paths);
-  let store: OPSQLiteVectorStore | undefined;
+  let db: DB | undefined;
   try {
     await embeddings.load();
-    store = new OPSQLiteVectorStore({ name: paths.databaseName, embeddings });
-    // The file already has its schema. Avoid the wrapper's multi-statement
-    // load() DDL, which is unsupported by the libSQL backend.
-    const { rows } = await store.db.execute('SELECT COUNT(*) AS count FROM vectors');
+    // The file already has its schema, so nothing is created here. It is opened
+    // from the directory it was copied to; the react-native-rag adapter can only
+    // open OP-SQLite's default directory, which is not writable on Android.
+    db = open({ name: paths.databaseName, location: paths.databaseLocation });
+    const { rows } = await db.execute('SELECT COUNT(*) AS count FROM vectors');
     if (rows[0]?.count !== manifest.database.chunks) throw new Error('Niepełna baza wiedzy.');
-    const keywords = await store.db.execute('SELECT COUNT(*) AS count FROM keywords');
+    const keywords = await db.execute('SELECT COUNT(*) AS count FROM keywords');
     if (keywords.rows[0]?.count !== manifest.database.chunks) throw new Error('Niepełny indeks słów kluczowych.');
     const probeVector = await embeddings.embed(manifest.probe.text);
-    const probe = await store.db.execute(
+    const probe = await db.execute(
       'SELECT 1-vector_distance_cos(embedding, vector(?)) AS similarity FROM vectors WHERE id = ?',
       [JSON.stringify(probeVector), manifest.probe.id],
     );
     if (typeof probe.rows[0]?.similarity !== 'number' || probe.rows[0].similarity < 0.995) {
       throw new Error('Model wyszukiwania nie pasuje do bazy wiedzy.');
     }
-    const loadedStore = store;
+    const loadedDb = db;
     return {
       async search(question: string): Promise<Source[]> {
         const vector = await embeddings.embed(question);
         // The adapter's query() returns every row with its embedding. Only rows
         // above the threshold can be selected, and they keep their rank.
-        const results = await loadedStore.db.execute(
+        const results = await loadedDb.execute(
           'SELECT id, document, metadata, similarity FROM (SELECT id, document, metadata, ' +
           '1-vector_distance_cos(embedding, vector(?)) AS similarity FROM vectors) ' +
           'WHERE similarity >= ? ORDER BY similarity DESC',
           [JSON.stringify(vector), manifest.retrieval.minSimilarity],
         );
         const expression = keywordExpression(question, manifest.retrieval);
-        const keywords = expression ? await loadedStore.db.execute(
+        const keywords = expression ? await loadedDb.execute(
           'SELECT id FROM keywords WHERE keywords MATCH ? ORDER BY bm25(keywords) LIMIT ?',
           [expression, manifest.retrieval.keywordCandidates],
         ) : undefined;
         return selectSources(results.rows.map(toSource), keywords?.rows.map((row) => String(row.id)) ?? [], manifest.retrieval);
       },
-      async dispose() { await loadedStore.unload(); },
+      async dispose() {
+        await embeddings.unload();
+        loadedDb.close();
+      },
     };
   } catch (error) {
     await embeddings.unload();
-    store?.db.close();
+    db?.close();
     throw error;
   }
 }
