@@ -1,0 +1,42 @@
+{
+  "questions": [
+    { "question": "Co robić jak będzie nalot?", "answerTerms": ["schron", "piwnic"] },
+    { "question": "A jak syreny słyszę?", "answerTerms": ["schron", "piwnic"] },
+    { "question": "A jak syreny słyszę?", "previousQuestions": ["Co robić jak będzie nalot?"], "answerTerms": ["schron", "piwnic"] },
+    { "question": "A gdzie się schować?", "previousQuestions": ["Co robić jak będzie nalot?"], "answerTerms": ["schron", "piwnic"] },
+    { "question": "Co robić podczas nalotu?", "answerTerms": ["schron", "piwnic"] },
+    { "question": "Słyszę syrenę, gdzie się ukryć?", "answerTerms": ["schron", "piwnic"] },
+    { "question": "Co robić gdy wyją syreny?", "answerTerms": ["stosuj się", "przerwij pracę"] },
+    { "question": "Co spakować do plecaka ewakuacyjnego?", "answerTerms": ["plecak", "ewakuacyjn"] },
+    { "question": "Ile wody pitnej należy zgromadzić na osobę?", "answerTerms": ["litr", "wod"] },
+    { "question": "Jak przygotować zapasy żywności na sytuację kryzysową?", "answerTerms": ["żywno", "zapas"] },
+    { "question": "Jak zabezpieczyć dokumenty przed ewakuacją?", "answerTerms": ["dokument"] },
+    { "question": "Co robić gdy słyszę alarm i jestem w budynku?", "answerTerms": ["schron", "piwnic"] },
+    { "question": "Co robić gdy alarm zastanie mnie na zewnątrz?", "answerTerms": ["budyn", "schron"] },
+    { "question": "Jak rozpoznać sygnał ogłoszenia alarmu?", "answerTerms": ["syren", "minut", "alarm"] },
+    { "question": "Co oznaczają alerty RCB o ataku z powietrza?", "answerTerms": ["alert", "rcb"] },
+    { "question": "Jak przygotować rodzinę na ewakuację podczas powodzi?", "answerTerms": ["ewakuac", "rodzin"] },
+    { "question": "Jak chronić dom przed powodzią?", "answerTerms": ["powod", "zabezpiecz"] },
+    { "question": "Czy można przejeżdżać samochodem przez wodę podczas powodzi?", "answerTerms": ["samoch", "wod"] },
+    { "question": "Czy woda z powodzi jest zdatna do picia?", "answerTerms": ["skaż"] },
+    { "question": "Jak bezpiecznie wrócić do domu po powodzi?", "answerTerms": ["powro", "wróc", "powod"] },
+    { "question": "Co zrobić gdy wyczuję ulatniający się gaz?", "answerTerms": ["gaz"] },
+    { "question": "Jak postępować w razie pożaru w budynku?", "answerTerms": ["pożar"] },
+    { "question": "Jak pomagać osobom starszym podczas ewakuacji?", "answerTerms": ["starsz", "pomoc", "ewakuac"] },
+    { "question": "Jak przygotować zwierzęta do ewakuacji?", "answerTerms": ["zwierz"] },
+    { "question": "Jak unikać dezinformacji podczas kryzysu?", "answerTerms": ["dezinform", "fałszyw", "informac"] },
+    { "question": "Jaki jest numer alarmowy w Polsce?", "answerTerms": ["112"] },
+    { "question": "Jak postępować podczas przerwy w dostawie prądu?", "answerTerms": ["prąd", "energ", "blackout"] }
+  ],
+  "unrelated": [
+    "Jak ugotować spaghetti carbonara?",
+    "Kto wygrał ligę mistrzów w 2026 roku?",
+    "Jak napisać aplikację w języku Python?",
+    "Jaka jest cena akcji Apple dzisiaj?",
+    "Jak rozwiązać równanie kwadratowe?",
+    "Co robić z nalotem na języku?",
+    "Jak wyczyścić nalot z czajnika?",
+    "O czym jest film Syrena?",
+    { "question": "A jak ugotować spaghetti carbonara?", "previousQuestions": ["Co robić jak będzie nalot?"] }
+  ]
+}

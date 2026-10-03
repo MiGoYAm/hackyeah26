@@ -8,7 +8,8 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.anonymous.my-app"
     },
     "android": {
       "adaptiveIcon": {
@@ -42,6 +43,14 @@
           "android": {
             "minSdkVersion": 26
           }
+        }
+      ],
+      [
+        "expo-asset",
+        {
+          "assets": [
+            "assets/offline/rag/knowledge_pl.db"
+          ]
         }
       ]
     ],

@@ -1,3 +1,5 @@
-import { ChatScreen } from '@/components/chat-screen';
+import { Redirect } from 'expo-router';
 
-export default ChatScreen;
+export default function ChatRedirect() {
+  return <Redirect href="/" />;
+}

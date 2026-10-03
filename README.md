@@ -1,5 +1,7 @@
 # Welcome to your Expo app 👋
 
+Chat na stronie głównej korzysta z lokalnego RAG opartego na polskich PDF-ach. Uruchomienie, odtwarzanie bazy i wyniki kontroli opisuje [docs/RAG.md](docs/RAG.md). Po `npm ci` uruchom `npm run rag:download` przed budowaniem aplikacji.
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started

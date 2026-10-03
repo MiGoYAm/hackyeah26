@@ -1,0 +1,8 @@
+{
+  "minSimilarity": 0.5,
+  "maxSources": 4,
+  "keywordCandidates": 12,
+  "reciprocalRankOffset": 60,
+  "keywordPrefixLength": 5,
+  "stopWords": ["aby", "albo", "ale", "ani", "bardzo", "być", "było", "co", "czy", "dla", "do", "gdy", "gdzie", "go", "ich", "jak", "jaka", "jaki", "jakie", "jaką", "jest", "jeśli", "kiedy", "kto", "które", "który", "ma", "mam", "mi", "mnie", "może", "można", "na", "nie", "o", "od", "oraz", "po", "pod", "podczas", "polska", "polsce", "polski", "polskim", "przed", "przez", "przy", "się", "są", "tak", "ten", "to", "w", "we", "z", "za", "ze"]
+}

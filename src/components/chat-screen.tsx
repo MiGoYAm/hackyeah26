@@ -9,82 +9,38 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { models, useLLMChatSession, type LLMChatSessionOptions } from 'react-native-executorch';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
-
-// Bielik v3 1.5B (~0.9 GB), downloaded on first launch and cached on the device.
-const MODEL = models.llm.BIELIK_V3_1_5B.XNNPACK_8DA4W;
-
-const SYSTEM_PROMPT = 'Jesteś pomocnym asystentem. Odpowiadasz po polsku, krótko i konkretnie.';
-
-const SESSION_OPTIONS: LLMChatSessionOptions = {
-  initialMessages: [{ role: 'system', content: SYSTEM_PROMPT }],
-  generationConfig: { temperature: 0.3, maxNewTokens: 512 },
-};
+import { useKnowledgeChat, type ChatMessage } from '@/hooks/use-knowledge-chat';
 
 const ACCENT = '#3c87f7';
 const DANGER = '#d03b3b';
 
-type Message = { id: string; role: 'user' | 'assistant'; text: string };
-
 export function ChatScreen() {
-  // Remounting the chat disposes the session and starts a fresh conversation.
-  const [conversation, setConversation] = useState(0);
-
-  return <Chat key={conversation} onReset={() => setConversation((c) => c + 1)} />;
-}
-
-function Chat({ onReset }: { onReset: () => void }) {
   const theme = useTheme();
-  const session = useLLMChatSession(MODEL, SESSION_OPTIONS);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const chat = useKnowledgeChat();
   const [input, setInput] = useState('');
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [sendError, setSendError] = useState<string>();
-  const listRef = useRef<FlatList<Message>>(null);
+  const listRef = useRef<FlatList<ChatMessage>>(null);
+  const { isReady, isBusy, messages, error, phase, downloadProgress } = chat;
+  const canSend = isReady && !isBusy && input.trim().length > 0;
 
-  const { isReady, sendMessage, stop, downloadProgress } = session;
-  const error = session.error?.message ?? sendError;
-  const canSend = isReady && input.trim().length > 0;
-
-  const handleSend = async () => {
+  const handleSend = () => {
+    if (!canSend) return;
     const text = input.trim();
-    if (!text || !sendMessage || isGenerating) return;
-
-    const replyId = `${Date.now()}-assistant`;
     setInput('');
-    setSendError(undefined);
-    setIsGenerating(true);
-    setMessages((prev) => [
-      ...prev,
-      { id: `${Date.now()}-user`, role: 'user', text },
-      { id: replyId, role: 'assistant', text: '' },
-    ]);
-
-    try {
-      await sendMessage(text, (token) => {
-        setMessages((prev) =>
-          prev.map((m) => (m.id === replyId ? { ...m, text: m.text + token } : m))
-        );
-      });
-    } catch (e) {
-      setSendError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setIsGenerating(false);
-    }
+    void chat.send(text);
   };
 
   return (
     <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+      <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
-          <ThemedText type="smallBold">Asystent (Bielik, offline)</ThemedText>
-          <Pressable onPress={onReset} disabled={isGenerating} hitSlop={8}>
+          <ThemedText type="smallBold">Asystent bezpieczeństwa</ThemedText>
+          <Pressable onPress={chat.reset} disabled={isBusy} accessibilityRole="button" hitSlop={8}>
             <ThemedText type="small" themeColor="textSecondary">
               Nowa rozmowa
             </ThemedText>
@@ -97,7 +53,7 @@ function Chat({ onReset }: { onReset: () => void }) {
             <ThemedText type="small" themeColor="textSecondary">
               {downloadProgress < 100
                 ? `Pobieranie modelu: ${downloadProgress.toFixed(0)}%`
-                : 'Wczytywanie modelu…'}
+                : 'Przygotowanie polskiej bazy wiedzy…'}
             </ThemedText>
           </View>
         )}
@@ -106,6 +62,15 @@ function Chat({ onReset }: { onReset: () => void }) {
           <View style={styles.status}>
             <ThemedText type="small" style={styles.error}>
               {error}
+            </ThemedText>
+          </View>
+        )}
+
+        {isBusy && (
+          <View style={styles.status} accessibilityLiveRegion="polite">
+            <ActivityIndicator />
+            <ThemedText type="small" themeColor="textSecondary">
+              {phase === 'searching' ? 'Szukam w polskich poradnikach…' : 'Przygotowuję odpowiedź…'}
             </ThemedText>
           </View>
         )}
@@ -128,13 +93,18 @@ function Chat({ onReset }: { onReset: () => void }) {
               ) : (
                 <ThemedView type="backgroundElement" style={[styles.bubble, styles.assistantBubble]}>
                   <ThemedText>{item.text || '…'}</ThemedText>
+                  {item.sources?.map((source, index) => (
+                    <ThemedText key={source.id} type="small" themeColor="textSecondary" style={styles.source}>
+                      [{index + 1}] {source.title}, strona PDF {source.page}
+                    </ThemedText>
+                  ))}
                 </ThemedView>
               )
             }
             ListEmptyComponent={
               isReady ? (
                 <ThemedText themeColor="textSecondary" style={styles.empty}>
-                  Napisz wiadomość, aby zacząć.
+                  Zapytaj o powódź, ewakuację, alarmy lub przygotowanie zapasów.
                 </ThemedText>
               ) : null
             }
@@ -148,13 +118,14 @@ function Chat({ onReset }: { onReset: () => void }) {
               ]}
               value={input}
               onChangeText={setInput}
-              placeholder="Napisz wiadomość"
+              placeholder="Zapytaj o bezpieczeństwo"
               placeholderTextColor={theme.textSecondary}
-              editable={isReady}
+              editable={isReady && !isBusy}
+              accessibilityLabel="Pytanie do asystenta"
               multiline
             />
-            {isGenerating ? (
-              <Pressable style={[styles.button, styles.stopButton]} onPress={() => stop?.()}>
+            {isBusy ? (
+              <Pressable style={[styles.button, styles.stopButton]} onPress={chat.stop} accessibilityRole="button">
                 <ThemedText type="smallBold" style={styles.buttonText}>
                   Stop
                 </ThemedText>
@@ -163,7 +134,8 @@ function Chat({ onReset }: { onReset: () => void }) {
               <Pressable
                 style={[styles.button, !canSend && styles.buttonDisabled]}
                 onPress={handleSend}
-                disabled={!canSend}>
+                disabled={!canSend}
+                accessibilityRole="button">
                 <ThemedText type="smallBold" style={styles.buttonText}>
                   Wyślij
                 </ThemedText>
@@ -179,7 +151,7 @@ function Chat({ onReset }: { onReset: () => void }) {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   container: { flex: 1, flexDirection: 'row', justifyContent: 'center' },
-  safeArea: { flex: 1, maxWidth: MaxContentWidth, paddingBottom: BottomTabInset },
+  safeArea: { flex: 1, maxWidth: MaxContentWidth },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -206,6 +178,7 @@ const styles = StyleSheet.create({
   userBubble: { alignSelf: 'flex-end', backgroundColor: ACCENT },
   assistantBubble: { alignSelf: 'flex-start' },
   userText: { color: '#ffffff' },
+  source: { marginTop: Spacing.two },
   inputRow: {
     flexDirection: 'row',
     alignItems: 'flex-end',

@@ -1,0 +1,17 @@
+{
+  "revision": "608cf9e40e4c815b05b9ee353c6b1974cd5b3b08",
+  "files": [
+    {
+      "filename": "multilingual_minilm.original.json",
+      "remote": "tokenizer.json",
+      "size": 17082987,
+      "sha256": "cad551d5600a84242d0973327029452a1e3672ba6313c2a3c3d69c4310e12719"
+    },
+    {
+      "filename": "multilingual_minilm_fp32.pte",
+      "remote": "xnnpack/paraphrase_multilingual_minilm_l12_v2_xnnpack_fp32.pte",
+      "size": 470258816,
+      "sha256": "25e273575a9a04c2a460c040b1011ac397211d304f9fdaf3bb2506bfb87e95e8"
+    }
+  ]
+}

@@ -41,3 +41,13 @@ example
 # generated native folders
 /ios
 /android
+
+# Reproducible RAG build tooling and downloaded model resources
+.rag-cache/
+scripts/rag/__pycache__/
+assets/offline/rag/models/*.pte
+assets/offline/rag/models/*.tokenizer
+assets/offline/rag/models/*.partial
+assets/offline/rag/models/*.original.json
+assets/offline/rag/models/*-tokenizer.json
+assets/offline/rag/models/*-fp32.pte
