@@ -1,6 +1,6 @@
 import { Asset } from 'expo-asset';
 import { Directory, File, Paths } from 'expo-file-system';
-import { ANDROID_DATABASE_PATH, IOS_LIBRARY_PATH } from '@op-engineering/op-sqlite';
+import { ANDROID_FILES_PATH, IOS_LIBRARY_PATH } from '@op-engineering/op-sqlite';
 import { Platform } from 'react-native';
 
 import manifest from '../../../assets/offline/rag/manifest.json';
@@ -37,7 +37,9 @@ function removeStale(directory: Directory, pattern: RegExp, current: string) {
 }
 
 export async function prepareKnowledgeAssets() {
-  const databasePath = Platform.OS === 'ios' ? IOS_LIBRARY_PATH : ANDROID_DATABASE_PATH;
+  // On Android expo-file-system can create files only inside the app's files and
+  // cache directories, so the default "databases" directory is out of reach.
+  const databasePath = Platform.OS === 'ios' ? IOS_LIBRARY_PATH : ANDROID_FILES_PATH;
   if (!databasePath) throw new Error('Nie można otworzyć lokalnej bazy wiedzy.');
   const databaseDirectory = new Directory(databasePath.startsWith('file://') ? databasePath : `file://${databasePath}`);
   databaseDirectory.create({ intermediates: true, idempotent: true });
@@ -52,6 +54,7 @@ export async function prepareKnowledgeAssets() {
   removeStale(new Directory(Paths.document, 'rag-models'), /./, manifest.model.revision);
   return {
     databaseName: manifest.database.filename,
+    databaseLocation: databasePath.replace(/^file:\/\//, ''),
     modelPath: model.uri.replace(/^file:\/\//, ''),
     tokenizerPath: tokenizer.uri.replace(/^file:\/\//, ''),
   };

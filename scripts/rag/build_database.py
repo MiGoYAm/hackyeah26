@@ -21,6 +21,7 @@ TOKENIZER_PATH = ASSETS / "models/multilingual_minilm.tokenizer"
 MAX_INPUT_TOKENS = 126
 MARGIN = 0.08
 ICON_FONTS = {"Arrows"}
+MIN_SECTION = 200
 # Broken font maps turn "mówimy" into "mBwimy" without any replacement character.
 BROKEN_LETTERS = re.compile(r"[a-ząćęłńóśźż][A-Z@][a-ząćęłńóśźż]")
 
@@ -64,7 +65,8 @@ def clean_page(text):
     lines = []
     for line in text.splitlines():
         line = re.sub(r"\s+", " ", line).strip()
-        if not line or re.fullmatch(r"(?:str\.\s*\d+\s*)+", line, re.IGNORECASE):
+        # Page footers, and list numbers the PDF stores apart from their items.
+        if not line or re.fullmatch(r"(?:str\.\s*\d+\s*)+|\d+[.)]", line, re.IGNORECASE):
             continue
         if lines and line == lines[-1]:
             continue
@@ -79,7 +81,7 @@ def clean_transcript(text):
     return re.sub(r"^\s*Narrator[^\n:]*:\s*$", "", text, flags=re.MULTILINE)
 
 
-def extract_page(page, page_number):
+def extract_page(page):
     # Keep the original body order (column-by-column), but lift short headings
     # out of the top margin: many PDFs store them after the body, and leaving
     # them in the body too would spend the token budget on repeats.
@@ -109,24 +111,44 @@ def extract_page(page, page_number):
     return " / ".join(headings)[:140], "\n".join(body)
 
 
+def is_subheading(line, following):
+    # gov.pl pages mark most of their headings only by layout: a short line
+    # without closing punctuation, followed by a paragraph or a list.
+    return (3 <= len(line) <= 70 and len(line.split()) <= 9 and line[-1] not in ".,;:!"
+            and not line.startswith(("-", "http")) and following is not None
+            and (following.startswith("-") or len(following) > len(line)))
+
+
 def web_sections(text):
     # Only the page's own text: attachments are separate sources or unusable scans.
-    sections = []
+    lines = []
     inside = False
     for line in text.splitlines():
         if line.startswith("## Ze strony"):
             inside = True
-            sections.append(["", []])
         elif line.startswith(("## Z załącznika", "## Uwaga o załączniku")):
             break
-        elif not inside or line.strip() in ("---", "-"):
-            continue
-        elif line.startswith("## ") and not line.rstrip().endswith("!"):
-            sections.append([line[3:].strip().rstrip(":"), []])
+        elif inside and line.strip() not in ("", "---", "-"):
+            lines.append(line.strip())
+    sections = [["", []]] if lines else []
+    for index, line in enumerate(lines):
+        following = lines[index + 1] if index + 1 < len(lines) else None
+        marked = line.startswith("## ")
+        line = line.removeprefix("## ")
+        # Callouts such as "## UWAGA!" introduce a sentence, not a section.
+        # The first line repeats the page title, which every fragment already carries.
+        if index and (marked and not line.endswith("!") or not marked and is_subheading(line, following)):
+            sections.append([line.rstrip(":"), []])
+        elif index:
+            sections[-1][1].append(line)
+    merged = []
+    for heading, body in sections:
+        # A section too short to stand alone stays with the text before it.
+        if merged and sum(map(len, body)) < MIN_SECTION:
+            merged[-1][1].extend([heading, *body])
         else:
-            # Callouts such as "## UWAGA!" introduce a sentence, not a section.
-            sections[-1][1].append(line.removeprefix("## "))
-    return [(heading, "\n".join(lines)) for heading, lines in sections]
+            merged.append([heading, body])
+    return [(heading, "\n".join(body)) for heading, body in merged]
 
 
 def split_page(text, title, tokenizer):
@@ -174,15 +196,17 @@ def build_chunks(tokenizer):
     audit_pages = []
     seen = set()
 
-    def add(source, path, source_hash, part, text, heading, page=None):
+    def add(source, source_hash, part, text, heading, page=None):
         for document in split_page(text, heading, tokenizer):
             text_hash = hashlib.sha256(document.encode()).hexdigest()
             if text_hash in seen:
                 continue
             seen.add(text_hash)
+            # Only what the app shows and what verification traces back to the source.
             metadata = {
-                **source, "documentId": source["id"], "section": heading,
-                "sourcePath": str(path.relative_to(ROOT)), "sourceSha256": source_hash,
+                "documentId": source["id"], "title": source["title"], "publisher": source["publisher"],
+                "language": source["language"], "section": heading, "sourceSha256": source_hash,
+                **{key: source[key] for key in ("year", "url") if key in source},
             }
             if page is not None:
                 metadata["page"] = page
@@ -202,7 +226,7 @@ def build_chunks(tokenizer):
                 text = clean_page(raw_text)
                 audit_pages.append({"documentId": source["id"], "section": section, "text": text})
                 heading = " / ".join(filter(None, [source["title"], section]))[:140]
-                add(source, path, source_hash, f"s{index}", text, heading)
+                add(source, source_hash, f"s{index}", text, heading)
             print(f'{source["id"]}: {len(sections)} sections', flush=True)
             continue
         path = ROOT / "assets/offline/pdfs" / (source["id"] + ".pdf")
@@ -211,7 +235,7 @@ def build_chunks(tokenizer):
         source_manifest.append({**source, "sha256": source_hash, "pages": len(reader)})
         broken = 0
         for page_number, page in enumerate(reader, 1):
-            heading, raw_text = extract_page(page, page_number)
+            heading, raw_text = extract_page(page)
             if "\x00" in raw_text or "\ufffd" in raw_text:
                 raise ValueError(f"Invalid Unicode extraction: {path}, page {page_number}")
             broken += len(BROKEN_LETTERS.findall(raw_text))
@@ -224,7 +248,7 @@ def build_chunks(tokenizer):
             if len(text) < 80:
                 continue
             # A page without its own heading is still about its document's topic.
-            add(source, path, source_hash, f"p{page_number}", text, heading or source["title"], page_number)
+            add(source, source_hash, f"p{page_number}", text, heading or source["title"], page_number)
         if broken > 10:
             raise ValueError(f"Broken Polish letters in the text layer: {path}")
         print(f'{source["id"]}: {len(reader)} PDF pages', flush=True)

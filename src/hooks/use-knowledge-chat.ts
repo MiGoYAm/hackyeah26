@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { models, useModel, useResourceDownload } from 'react-native-executorch';
 
 import { cleanAnswer } from '@/services/rag/answer';
-import { acquireRetrieval } from '@/services/rag/retrieval';
 import { KnowledgeConversation } from '@/services/rag/conversation';
+import { acquireRetrieval } from '@/services/rag/retrieval';
 import { createKnowledgeRunner } from '@/services/rag/runner';
 import type { ChatPhase, CitedSource, ConversationTurn, Source } from '@/services/rag/types';
 
