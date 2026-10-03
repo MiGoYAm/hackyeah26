@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { AssistantMarkdown } from '@/components/assistant-markdown';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { MaxContentWidth, Spacing } from '@/constants/theme';
@@ -92,7 +93,7 @@ export function ChatScreen() {
                 </View>
               ) : (
                 <ThemedView type="backgroundElement" style={[styles.bubble, styles.assistantBubble]}>
-                  <ThemedText>{item.text || '…'}</ThemedText>
+                  <AssistantMarkdown text={item.text} />
                   {item.sources?.map((source) => (
                     <ThemedText key={source.id} type="small" themeColor="textSecondary" style={styles.source}>
                       [{source.reference}] {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: Spacing.three,
   },
   userBubble: { alignSelf: 'flex-end', backgroundColor: ACCENT },
-  assistantBubble: { alignSelf: 'flex-start' },
+  assistantBubble: { alignSelf: 'flex-start', width: '85%' },
   userText: { color: '#ffffff' },
   source: { marginTop: Spacing.two },
   inputRow: {

@@ -27,15 +27,9 @@ export function repetitionStart(text: string): number {
   return second;
 }
 
-// The chat renders plain text, so Markdown from the model would show up as stray characters.
+// Preserve Markdown and internal whitespace for both streamed and final replies.
 export function cleanAnswer(text: string): string {
-  return text
-    .replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
-    .replace(/^[ \t]*[*•][ \t]+/gm, '- ')
-    .replace(/\*+|_{2,}|`+/g, '')
-    .replace(/[ \t]{2,}/g, ' ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+  return text.trim();
 }
 
 // A small model sometimes cites a source it was never given; drop that number, keep the advice.
