@@ -12,6 +12,7 @@
       "bundleIdentifier": "com.anonymous.my-app"
     },
     "android": {
+      "package": "com.anonymous.myapp",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
