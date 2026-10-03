@@ -55,8 +55,6 @@ Numery alarmowe - str.30
 Źródła wiedzy na temat sytuacji powodziowej
 i meteorologicznej – str.31
 
-str.1
-
 ---
 
 1. WSTĘP
@@ -86,10 +84,6 @@ Może być wynikiem
 intensywnych opadów
 deszczu, roztopów, sztormów
 lub przerwania zapór.
-str.2
-str.2
-str.2
-str.2
 
 ---
 
@@ -117,8 +111,6 @@ Biorąc pod uwagę różnorodny charakter powodzi,
 może ona wystąpić zarówno w okolicy rzek, morza,
 jeziora, jak i na terenie górzystym lub w centrum
 dużego miasta.
-
-str.3
 
 ---
 
@@ -153,7 +145,6 @@ sztorm – silny wiatr na zalewach
 i wybrzeżach może wpychać wodę
 z Bałtyku do rzek powodując
 zjawisko tzw. cofki.
-str.4
 
 ---
 
@@ -175,9 +166,6 @@ położony na brzegu
 rzeki pomiędzy linią
 brzegową a wałem
 przeciwpowodziowym
-
-str.5
-str.3
 
 ---
 
@@ -202,8 +190,6 @@ hodowlanych);
 utrata majątku – np. samochodu, sprzętu
 
 elektronicznego, mebli.
-
-str.6
 
 ---
 
@@ -234,8 +220,6 @@ zwracać uwagę na ostrzeżenia
 wydawane przez lokalne władze
 oraz Rządowe Centrum
 Bezpieczeństwa i media.
-str.7
-str.3
 
 ---
 
@@ -250,11 +234,6 @@ Informację o tym, czy mieszkasz na terenie
 zalewowym, uzyskasz na stronie:
 
 https://mapy.isok.gov.pl
-
-str.2
-str.8
-str.4
-str.2
 
 ---
 
@@ -282,8 +261,6 @@ do prądu, gazu i wody na wypadek powodzi;
 Stwórzcie razem „Rodzinny plan
 powodziowy” (wzór można pobrać TUTAJ).
 
-str.9
-
 ---
 
 Przygotuj plan ewakuacji
@@ -308,7 +285,6 @@ władze lokalne – urząd gminy lub miasta;
 gminne zespoły zarządzania kryzysowego;
 doświadczenia rodziny i osób mieszkających
 w pobliżu.
-str.10
 
 ---
 
@@ -327,9 +303,6 @@ kontaktowania się;
 
 miejsce spotkania w razie rozdzielenia (nie
 może znajdować się na terenie zalewowym).
-
-str.11
-str.5
 
 ---
 
@@ -353,9 +326,6 @@ mieszkasz w nisko położonym rejonie lub
 w pobliżu rzeki, strumienia, zbiornika wodnego
 zwracaj uwagę na poziom wody w czasie
 intensywnych opadów.
-
-str.12
-str.5
 
 ---
 
@@ -385,9 +355,6 @@ Zgromadź w domu żywność
 o długotrwałej przydatności
 do spożycia i wodę.
 
-str.13
-str.5
-
 ---
 
 Plecak ewakuacyjny
@@ -398,8 +365,6 @@ podstawowe artykuły na wypadek ewakuacji.
 Checklista najważniejszych rzeczy, które mogą
 przydać się w czasie zagrożenia powodziowego
 dostępna jest TUTAJ.
-
-str.14
 
 ---
 
@@ -422,9 +387,6 @@ odprowadzania wody z dachu (np. rynny).
 Sprawdź drożność kratek kanalizacyjnych
 i usuń np. zalegające liście.
 
-str.15
-str.5
-
 ---
 
 Wały przeciwpowodziowe
@@ -445,8 +407,6 @@ sadzenie drzew na wałach;
 stawianie budynków, kopanie studni, sadzawek,
 dołów oraz rowów w odległości mniejszej niż 50 m
 od podstawy wałów.
-
-str.16
 
 ---
 
@@ -480,8 +440,6 @@ Wyłącz media – odłącz instalację
 gazową i elektryczną, zamknij
 dopływ wody, zabezpiecz sieć
 kanalizacyjną lub szambo.
-str.2
-str.17
 
 ---
 
@@ -512,11 +470,6 @@ polisy ubezpieczeniowe;
 Zabezpiecz budynki
 i przygotuj worki z piaskiem.
 
-str.2
-str.18
-str.8
-str.2
-
 ---
 
 Zabezpiecz pojazdy
@@ -535,7 +488,6 @@ W razie zagrożenia
 zdrowia lub życia
 dzwoń na numer
 alarmowy 112!
-str.19
 
 ---
 
@@ -564,11 +516,6 @@ nawozy, pestycydy, środki owadobójcze, farby,
 lakiery, rozpuszczalniki i inne środki
 chemiczne.
 
-str.2
-str.20
-str.8
-str.2
-
 ---
 
 4. W CZASIE POWODZI
@@ -594,9 +541,6 @@ Przygotuj się do ewentualnej ewakuacji – miej
 pod ręką niezbędne rzeczy, w tym plecak
 ewakuacyjny.
 
-str.2
-str.21 str.2
-
 ---
 
 Jak wezwać pomoc
@@ -618,7 +562,6 @@ lub przekaż wiadomość załodze
 
 TAK NIE str.2
 potrzebna pomoc nie potrzebujemy pomocy str.22
-str.2
 
 ---
 
@@ -642,7 +585,6 @@ Pamiętaj!
 Zawsze stosuj się do poleceń
 służb prowadzących akcję
 ratunkową! str.2
-str.23
 
 ---
 
@@ -664,11 +606,6 @@ punkcie ewidencyjnym - w ten
 sposób łatwiej odnajdzie cię
 rodzina.
 
-str.2
-str.24
-str.8
-str.2
-
 ---
 
 Co zrobić, jeśli jesteś na zewnątrz
@@ -689,9 +626,6 @@ przekroczyć zalany
 obszar, wybierz miejsce
 bez silnego nurtu.
 
-str.25
-str.9
-
 ---
 
 Jeśli jesteś w samochodzie
@@ -706,8 +640,6 @@ Pozostawanie w samochodzie podczas
 wezbrania jest niebezpieczne. Większość
 samochodów może zostać poniesiona przez
 wodę.
-
-str.26
 
 ---
 
@@ -740,8 +672,6 @@ w szczelinach i gniazdkach.
 
 Sprawdź instalację wodno-kanalizacyjną.
 
-str.27
-
 ---
 
 Zdrowie - środki ostrożności
@@ -770,10 +700,7 @@ pomocy społecznej. Zasiłek jest
 przeznaczony na pokrycie
 kosztów zakupu żywności, leków,
 opału, odzieży, niezbędnych
-str.2
-przedmiotów użytku domowego. str.28
-str.2
-str.10
+przedmiotów użytku domowego.
 
 ---
 
@@ -805,8 +732,6 @@ podłogi.
 Jeśli to możliwe, włącz się
 do pomocy innym
 w usuwaniu skutków powodzi.
-str.2
-str.29
 
 ---
 
@@ -824,9 +749,6 @@ Pogotowie Cieplne - 993
 Pogotowie Gazowe - 992
 
 Pogotowie Energetyczne – 991
-
-str.30
-str.2
 
 ---
 
@@ -850,5 +772,28 @@ Regionalne portale pogodowe
 i aplikacje mobilne z alertami
 pogodowymi
 
-str.2
-str.31
+---
+
+## Uzupełnienie: strona RCB „Jak postępować podczas powodzi?"
+
+> Źródło: RCB, gov.pl — https://www.gov.pl/web/rcb/jak-postepowac-podczas-powodzi2 (stan na 2026-10-03). Punkty częściowo pokrywają się z poradnikiem powyżej; poniżej pełna lista ze strony, w tym wskazówki dla gospodarstw rolnych.
+
+W sytuacji zagrożenia powodziowego należy śledzić na bieżąco prognozy, komunikaty i ostrzeżenia hydrologiczne i meteorologiczne wydawane przez Instytut Meteorologii i Gospodarki Wodnej.
+
+- Słuchaj komunikatów o zagrożeniu i sposobach postępowania w lokalnym radiu lub telewizji;
+- Jeśli to możliwe, odeślij dzieci i osoby starsze w bezpieczne miejsce np. do znajomych czy rodziny;
+- Upewnij się, że wszyscy członkowie rodziny, zwłaszcza dzieci, wiedzą co robić w razie powodzi, ustal sposoby kontaktowania się, drogi ewakuacji;
+- Naucz członków rodziny odłączania źródeł energii, gazu i wody;
+- Przenieś wartościowe rzeczy na górne kondygnacje budynku;
+- Zadbaj o to, by telefon komórkowy cały czas był w pełni naładowany;
+- Przygotuj w bezpiecznym miejscu lekarstwa, dowody tożsamości, kosztowności, pieniądze, dokumenty dotyczące domu i posiadanych gruntów, dokumentację działalności gospodarczej i polisy ubezpieczeniowe;
+- Zaopatrz dom w niezbędną ilość żywności o długiej ważności do spożycia, wodę i przygotować odpowiednią odzież, latarki, koce i środki higieniczne;
+- Pojazdy z terenu posesji przestaw w niezagrożone powodzią miejsca;
+- Zabezpiecz budynek i przygotuj worki z piaskiem;
+- Przygotuj zwierzęta hodowlane do ewakuacji, porozmawiaj z sąsiadami o pomocy przy załadunku;
+- Rozważ ewakuację zwierząt zaraz po ogłoszeniu alarmu powodziowego. Taka ewakuacja jest zawsze dużo trudniejsza niż ewakuacja ludzi i zajmuje dużo czasu. Sprzęt pływający w dyspozycji straży pożarnej i wojska bardzo często nie nadaje się do ewakuacji dużych zwierząt;
+- Paszę dla zwierząt przenieś w niezagrożone zalaniem miejsce;
+- Zabezpiecz substancje niebezpieczne – pestycydy, środki owadobójcze, farby, lakiery, rozpuszczalniki i inne środki chemiczne;
+- Zabezpiecz zbiorniki z olejem, paliwem;
+- Jeśli masz sprzęt pływający (pontony, łodzie itp.), utrzymuj go w sprawności i używaj go wyłącznie podczas zagrożenia życia;
+- Przygotuj się do ewakuacji. Pozostawanie na zalanym terenie to ogromne ryzyko: oprócz zagrożenia utonięciem, należy liczyć się z chorobami zakaźnymi, brakiem prądu, wody i kanalizacji; po odmowie ewakuacji otrzymanie niezbędnej pomocy na czas może nie być możliwe.

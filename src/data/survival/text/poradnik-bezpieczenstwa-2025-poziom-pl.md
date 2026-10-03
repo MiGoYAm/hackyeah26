@@ -10,7 +10,7 @@ Przeczytaj, przećwicz i zachowaj!
 
 ---
 
-Spis treści TELEFO NY A L AR MOWE  GDZIESZ UKAĆ WS PAR C I A 
+Spis treści TELEFO NY A L AR MOWE  GDZIESZ UKAĆ WS PAR C I A 
 
 112 800 70 22 22
 WSTĘP
@@ -173,7 +173,7 @@ chcesz zostać żołnierzem zawodowym, możesz starać się o stypendium
 wojskowe na czas nauki.
 Jeżeli masz kartę mobilizacyjną, przeczytaj ją uważnie – znajdziesz tam
 adres i termin stawiennictwa. Jeżeli karta zaginęła lub dane na niej są
-nieaktualne, skontaktuj się z najbliższym Wojskowym Centrum Rekrutacji. S IŁY ZB RO JNE RPSĄG OTOWE D O R EAL I Z AC JI T R Z EC H R OD Z AJÓW MI S JI : 
+nieaktualne, skontaktuj się z najbliższym Wojskowym Centrum Rekrutacji. S IŁY ZB RO JNE RPSĄG OTOWE D O R EAL I Z AC JI T R Z EC H R OD Z AJÓW MI S JI : 
 
 Zarówno w czasie kryzysu lub mobilizacji, jak i wojny, możesz zostać
 A obrona państwa i przeciwstawianie się agresji w ramach sojuszy,
@@ -369,7 +369,7 @@ względem pracowników w czasie stanów nadzwyczajnych i wojny.
 Przygotowanie Przygotowanie
 Przygotuj swoje otoczenie Przygotuj swoje otoczenie
 
-ZAPA SY DOM OW E N A MIN IMU M 3 DN I ZA PA SY D O MOWE NA MI NI MUM 3 D NI 
+ZAPA SY DOM OW E N A MIN IMU M 3 DN I ZA PA SY D O MOWE NA MI NI MUM 3 D NI 
 
 zapasy ◻ Jedzenie i picie: minimum 3 litry wody na osobę
 woda żywności
@@ -530,7 +530,7 @@ Pożar Pożar
 Reagowanie Reagowanie
 Pożar W czasie pożaru nie używaj windy! Korzystaj ze schodów.
 
-I N ST RU KCJA GASZ ENIA P OŻ AR ÓW P ODR ĘCZN YM SP R ZĘTEM GA Ś NICZYM 
+I N ST RU KCJA GASZ ENIA P OŻ AR ÓW P ODR ĘCZN YM SP R ZĘTEM GA Ś NICZYM 
 
 A Gdy zauważysz pożar lub dym, A Chroń drogi oddechowe.
 Co Jakiej Czym wezwij straż pożarną. Zadzwoń Osłaniaj usta i nos, najlepiej
@@ -644,7 +644,7 @@ A Niebieska flaga – potrzebuję żywności i wody. latarka
 Flaga może być zrobiona np. z ubrań.
 
 Śledź informacje o stanach wód na stronach:
-A wody.gov.pl
+A wody.gov.pl
 isok.gov.pl
 hydro.imgw.pl radio latarka czołowa agregat
 prądotwórczy
@@ -761,7 +761,7 @@ i nie publikuj zdjęć wojska, ważnych obiektów, np. mostów, stacji kolejowyc
 magazynów.
 Nie bądź bierny!
 
-WA Ż N E
+WA Ż N E
 Wszystkie informacje sprawdzaj w pewnych,
 publicznych źródłach informacji, takich jak
 Dzwoń tylko, jeśli naprawdę musisz – Polskie Radio, Telewizja Polska, rządowe
@@ -933,107 +933,107 @@ Regularnie go aktualizuj i ćwicz z domownikami.
 ---
 
 Plan na kryzys Plan na kryzys
-DAN E KON TA K TOW ENAW YPADE K K RYZ YSU  MIEJS CE, W K TÓRY MSIĘS POT KAMY, JEŚ L I ZOSTANI EMY R OZ D Z I EL ENI 
+DAN E KON TA K TOW ENAW YPADE K K RYZ YSU  MIEJS CE, W K TÓRY MSIĘS POT KAMY, JEŚ L I ZOSTANI EMY R OZ D Z I EL ENI 
 
 Imię Nazwisko Telefon E-mail W najbliższej okolicy
 
 Lokalizacja 1 Adres Osoba do kontaktu Telefon
-   
+- …
 
-   
-   
+- …
+- …
 Lokalizacja 2
 
-   
-   
+- …
+- …
 
-    Lokalizacja 3
+    Lokalizacja 3
 
-       
+- …
 
-    Poza miejscowością zamieszkania
+    Poza miejscowością zamieszkania
 
 Lokalizacja 1 Adres Osoba do kontaktu Telefon
-   
-   
-   
+- …
+- …
+- …
 Lokalizacja 2
 
-   
-   
+- …
+- …
 
 Lokalizacja 3
-   
+- …
 
-   
-   
+- …
+- …
 
-    Notatki
+    Notatki
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
 26
 
 ---
 
 Plan na kryzys Plan na kryzys
-C H OR OBY, A L E RG I E, P R Z YJ MOWAN E STALE LE K I WA ŻNE TELEFONY 
+C H OR OBY, A L E RG I E, P R Z YJ MOWAN E STALE LE K I WA ŻNE TELEFONY 
 
 np. lekarz rodzinny, opiekunowie dzieci, seniorów, osób z niepełnosprawnościami, sąsiedzi,
 Imię i nazwisko Choroby Alergie Leki znajomi, szkoła, praca, przychodnia.
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-    
+- …
 
-
-L I STA N I EZ B ĘDN YCH RZECZYI GDZ IE J E TR Z YMAMY
+- …
+L I STA N I EZ B ĘDN YCH RZECZYI GDZ IE J E TR Z YMAMY
 
-
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
- 
+- …
 
 27
 
 ---
 
-DEKA LOG B EZ P I ECZ EŃ STWA  SYGNA ŁY A LAR MOWE 
+DEKA LOG B EZ P I ECZ EŃ STWA  SYGNA ŁY A LAR MOWE 
 
 1 Korzystaj z wiarygodnych źródeł informacji, Ogłoszenie alarmu
 przede wszystkim rządowych. ciągły, modulowany dźwięk syreny trwający 3 minuty
@@ -1048,7 +1048,7 @@ ciągły, jednostajny dźwięk syreny trwający 3 minuty
 Naucz się udzielać pierwszej pomocy.
 5 Regularnie rób lub zlecaj przeglądy instalacji:
 elektrycznej, gazowej, wentylacyjnej i kominowej.
-BĄD Ź NA B IEŻĄC O 
+BĄD Ź NA B IEŻĄC O 
 6 Dla dzieci i seniorów przygotuj identyfikatory
 z imieniem, nazwiskiem i telefonem kontaktowym. Pobierz aplikację RSO
 Regionalny System Ostrzegania (RSO) to bezpłatna aplikacja mobilna, która
