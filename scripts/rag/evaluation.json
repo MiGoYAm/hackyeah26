@@ -29,6 +29,7 @@
     {"question": "Jak postępować podczas przerwy w dostawie prądu?", "documents": ["poradnik-bezpieczenstwa-2025-pl", "badz-gotowy-pl"], "answerTerms": ["brak prądu", "przerwy w dostawie prądu", "blackout"]},
     {"question": "Dlaczego warto mieć zapas wody?", "previousQuestions": ["Co robić jak będzie nalot?"], "documents": ["poradnik-bezpieczenstwa-2025-pl", "badz-gotowy-pl"], "answerTerms": ["wod"]},
     {"question": "Jakie są objawy zatrucia czadem?", "documents": ["czad-nie-dla-czadu"], "answerTerms": ["zawroty głowy", "ból głowy"]},
+    {"question": "Jak zapobiegać zatruciu tlenkiem węgla?", "documents": ["czad-nie-dla-czadu"], "answerTerms": ["czujnik", "wentylac", "przewod"]},
     {"question": "Co robić podczas burzy poza domem?", "documents": ["burza-badz-bezpieczny", "transkrypcja-burza"], "answerTerms": ["drzew"]},
     {"question": "Jak rozpoznać udar cieplny?", "documents": ["upal-jak-przetrwac", "transkrypcja-upal"], "answerTerms": ["udar"]},
     {"question": "Co robić przy odmrożeniach?", "documents": ["zima-bezpieczna"], "answerTerms": ["odmroż"]},
@@ -37,20 +38,23 @@
     {"question": "Co robić gdy pali się las?", "documents": ["poradnik-pozar-2024"], "answerTerms": ["pożar w lesie", "lasów"]},
     {"question": "Co oznacza stopień alarmowy BRAVO?", "documents": ["stopnie-alarmowe"], "answerTerms": ["bravo oznacza"]},
     {"question": "Co oznacza stopień CHARLIE-CRP?", "documents": ["stopnie-alarmowe"], "answerTerms": ["charlie-crp oznacza"]},
-    {"question": "Co robić przy skażeniu chemicznym?", "documents": ["cbrne-zagrozenie-chemiczne", "transkrypcja-chemiczne", "poradnik-bezpieczenstwa-2025-pl", "badz-gotowy-pl"], "answerTerms": ["zamknij okna", "opuść", "umyj"]},
+    {"question": "Co robić przy skażeniu chemicznym?", "documents": ["cbrne-zagrozenie-chemiczne", "transkrypcja-chemiczne", "poradnik-bezpieczenstwa-2025-pl", "badz-gotowy-pl"], "answerTerms": ["zamknij okna", "opuść", "umyj", "spłuk", "płukan"]},
     {"question": "Jak postępować po połknięciu substancji chemicznej?", "documents": ["cbrne-zagrozenie-chemiczne", "transkrypcja-chemiczne"], "answerTerms": ["połkn"]},
     {"question": "Co robić w razie zagrożenia radiacyjnego?", "documents": ["cbrne-zagrozenie-radiacyjne", "transkrypcja-radiacyjne", "poradnik-bezpieczenstwa-2025-pl", "badz-gotowy-pl"], "answerTerms": ["schron", "zdejmij", "słuchaj radia"]},
-    {"question": "Co robić po wybuchu jądrowym?", "documents": ["cbrne-zagrozenie-jadrowe", "transkrypcja-jadrowe", "poradnik-bezpieczenstwa-2025-pl"], "answerTerms": ["schron", "grubymi ścianami"]},
+    {"question": "Co robić po wybuchu jądrowym?", "documents": ["cbrne-zagrozenie-jadrowe", "transkrypcja-jadrowe", "poradnik-bezpieczenstwa-2025-pl"], "answerTerms": ["schron", "grubymi ścianami", "schowaj się", "wejdź do najbliższego budynku"]},
     {"question": "Jak chronić się przed zagrożeniem biologicznym?", "documents": ["cbrne-zagrozenie-biologiczne", "transkrypcja-biologiczne", "badz-gotowy-pl"], "answerTerms": ["drogi oddechowe", "higien", "myj"]},
     {"question": "Jak bezpiecznie kąpać się w jeziorze?", "documents": ["woda-badz-bezpieczny"], "answerTerms": ["kąpielisk", "ratownik"]}
   ],
   "knownGaps": [
     {"question": "Jak przetrwać upał?", "documents": ["upal-jak-przetrwac", "transkrypcja-upal"], "answerTerms": ["nawadnia", "pij", "płyn"]},
-    {"question": "Jak zapobiegać zatruciu tlenkiem węgla?", "documents": ["czad-nie-dla-czadu"], "answerTerms": ["czujnik", "wentylac", "przewod"]},
     {"question": "Jak rozpoznać wychłodzenie organizmu?", "documents": ["zima-bezpieczna"], "answerTerms": ["dreszcze"]},
     {"question": "Jak udzielić pomocy osobie porażonej piorunem?", "documents": ["burza-badz-bezpieczny", "transkrypcja-burza"], "answerTerms": ["oddych", "resuscytac"]},
     {"question": "Co robić gdy wichura zastanie mnie w samochodzie?", "documents": ["poradnik-wichura-2024", "wichura-jak-sie-przygotowac"], "answerTerms": ["samoch"]},
     {"question": "Dlaczego nie windą?", "previousQuestions": ["Co robić jak będzie nalot?"], "documents": ["poradnik-bezpieczenstwa-2025-pl", "atak-powietrza-instrukcja", "atak-powietrza-alerty-rodzaje", "atak-powietrza-slyszysz-alarm", "badz-gotowy-pl"], "answerTerms": ["wind"]}
+  ],
+  "knownAccepted": [
+    "Jaki telefon kupić w tym roku?",
+    "Jak pomalować dom na zewnątrz?"
   ],
   "unrelated": [
     "Jak ugotować spaghetti carbonara?",
@@ -61,6 +65,10 @@
     "Co robić z nalotem na języku?",
     "Jak wyczyścić nalot z czajnika?",
     "O czym jest film Syrena?",
+    "Ile kosztuje plecak szkolny dla dziecka?",
+    "Jaka będzie pogoda jutro w Krakowie?",
+    "Jak naprawić samochód, który nie odpala?",
+    "Jak ugotować wodę na herbatę?",
     {"question": "A jak ugotować spaghetti carbonara?", "previousQuestions": ["Co robić jak będzie nalot?"]}
   ]
 }

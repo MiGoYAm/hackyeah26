@@ -11,12 +11,12 @@ function toSource(row: Record<string, unknown>): Source {
   if (
     typeof row.id !== 'string' || typeof row.document !== 'string' || typeof row.similarity !== 'number' ||
     metadata?.language !== 'pl' || typeof metadata.documentId !== 'string' ||
-    typeof metadata.title !== 'string' || typeof metadata.publisher !== 'string' || typeof metadata.year !== 'number' ||
+    typeof metadata.title !== 'string' || typeof metadata.publisher !== 'string' ||
     (typeof metadata.page !== 'number' && typeof metadata.url !== 'string')
   ) throw new Error('Nieprawidłowe źródło w bazie wiedzy.');
   return {
     id: row.id, documentId: metadata.documentId, title: metadata.title,
-    publisher: metadata.publisher, year: metadata.year, page: metadata.page, url: metadata.url,
+    publisher: metadata.publisher, year: metadata.year, page: metadata.page, section: metadata.section, url: metadata.url,
     text: row.document, similarity: row.similarity,
   };
 }
@@ -82,7 +82,7 @@ export async function createRetrieval() {
       async search(question: string): Promise<Source[]> {
         const vector = await embeddings.embed(question);
         // The adapter's query() returns every row with its embedding. Only rows
-        // above the threshold can be selected, and they keep their rank.
+        // above the threshold can be selected.
         const results = await loadedDb.execute(
           'SELECT id, document, metadata, similarity FROM (SELECT id, document, metadata, ' +
           '1-vector_distance_cos(embedding, vector(?)) AS similarity FROM vectors) ' +

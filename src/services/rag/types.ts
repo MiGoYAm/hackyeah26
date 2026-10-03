@@ -3,9 +3,10 @@ export type Source = {
   documentId: string;
   title: string;
   publisher: string;
-  year: number;
-  // PDF sources have a page; pages of gov.pl have only their address.
+  // PDF sources have a year and a page; pages of gov.pl have a section and their address.
+  year?: number;
   page?: number;
+  section?: string;
   url?: string;
   text: string;
   similarity: number;

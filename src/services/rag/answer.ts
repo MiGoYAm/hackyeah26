@@ -39,11 +39,18 @@ export function cleanAnswer(text: string): string {
 }
 
 // A small model sometimes cites a source it was never given; drop that number, keep the advice.
+// Lists and ranges such as [1, 2] or [1-3] become [1][2][3], the only form the chat resolves.
 export function dropUnknownCitations(text: string, sourceCount: number): string {
   return text
-    .replace(/[ \t]*\[(\d+)\]/g, (citation, number) => {
-      const reference = Number(number);
-      return reference >= 1 && reference <= sourceCount ? citation : '';
+    .replace(/([ \t]*)\[(\d+(?:\s*[,;–-]\s*\d+)*)\]/g, (_, space: string, list: string) => {
+      const references = new Set<number>();
+      for (const part of list.split(/[,;]/)) {
+        const [first, last = first] = part.split(/[–-]/).map(Number);
+        for (let reference = Math.max(first, 1); reference <= Math.min(last, sourceCount); reference += 1) {
+          references.add(reference);
+        }
+      }
+      return references.size ? space + [...references].map((reference) => `[${reference}]`).join('') : '';
     })
     .trim();
 }

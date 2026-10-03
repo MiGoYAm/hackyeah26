@@ -28,6 +28,9 @@ def main():
     connection.close()
     assert len(rows) == manifest["database"]["chunks"]
     allowed = {item["id"] for item in json.loads((ROOT / "scripts/rag/sources.json").read_text())}
+    for source in manifest["sources"]:
+        path = source["file"] if source.get("type") == "web" else f'assets/offline/pdfs/{source["id"]}.pdf'
+        assert digest(ROOT / path) == source["sha256"], f'Source changed since the build: {path}'
     vectors = []
     documents = []
     found_sources = set()
@@ -39,7 +42,7 @@ def main():
             assert "page" not in metadata and metadata["url"].startswith("https://www.gov.pl/")
         else:
             assert 1 <= metadata["page"] <= source["pages"]
-        assert digest(ROOT / metadata["sourcePath"]) == metadata["sourceSha256"]
+        assert metadata["sourceSha256"] == source["sha256"]
         vector = np.frombuffer(blob, dtype="<f4")
         assert vector.shape == (384,) and np.isfinite(vector).all()
         assert abs(float(np.linalg.norm(vector)) - 1) < 0.001
@@ -58,13 +61,18 @@ def main():
     # Known gaps are questions the corpus answers but retrieval still misses.
     # They are reported, not hidden, and do not fail the run until fixed.
     cases = evaluation["questions"] + evaluation["knownGaps"]
-    questions = application_ranking({"action": "prepare", "cases": cases})
-    expressions = application_ranking({"action": "keywords", "questions": questions, "config": manifest["retrieval"]})
-    report = {"questions": [], "knownGaps": [], "unrelated": [], "chunks": len(rows)}
+    # Known accepted questions are outside the corpus, yet a fragment passes the
+    # similarity threshold on its own. Like known gaps, they are reported only.
+    unrelated_cases = [{"question": question} if isinstance(question, str) else question
+                       for question in evaluation["unrelated"] + evaluation["knownAccepted"]]
+    prepared = application_ranking({"action": "prepare", "cases": cases + unrelated_cases})
+    expressions = application_ranking({"action": "keywords", "config": manifest["retrieval"],
+                                       "questions": [text or "" for text in prepared]})
+    report = {"questions": [], "knownGaps": [], "unrelated": [], "knownAccepted": [], "chunks": len(rows)}
     failures = []
-    for number, (case, search_text, expression) in enumerate(zip(cases, questions, expressions, strict=True)):
-        gap = number >= len(evaluation["questions"])
-        started = time.perf_counter()
+
+    def select(search_text, expression):
+        # The same steps as the app: vector ranking, keyword candidates, fusion.
         scores = matrix @ embedder.embed(search_text)
         order = np.argsort(scores)[::-1]
         keyword_ids = [row[0] for row in keyword_connection.execute(
@@ -73,28 +81,40 @@ def main():
         vectors = [{**documents[int(index)], "similarity": float(scores[index])} for index in order]
         selected = application_ranking({"action": "rank", "config": manifest["retrieval"],
                                        "cases": [{"vectors": vectors, "keywordIds": keyword_ids}]})[0]
+        return selected, float(scores[order[0]])
+
+    def summary(selected):
+        return [{"id": doc["id"], "similarity": round(doc["similarity"], 3)} for doc in selected]
+
+    for number, (case, search_text, expression) in enumerate(zip(cases, prepared, expressions)):
+        gap = number >= len(evaluation["questions"])
+        started = time.perf_counter()
+        selected, top = select(search_text, expression)
         # A hit is one fragment from an expected document that itself holds the
         # answer; a generic word somewhere in the selection proves nothing.
         rank = next((position for position, doc in enumerate(selected, 1)
                      if doc["documentId"] in case["documents"]
                      and any(term in doc["text"].lower() for term in case["answerTerms"])), None)
         hit = rank is not None
-        report["knownGaps" if gap else "questions"].append({"question": case["question"], "searchText": search_text, "hit": hit, "rank": rank,
-                                   "milliseconds": round((time.perf_counter() - started) * 1000), "results": selected})
+        report["knownGaps" if gap else "questions"].append({
+            "question": case["question"], "searchText": search_text, "hit": hit, "rank": rank,
+            "milliseconds": round((time.perf_counter() - started) * 1000), "results": summary(selected)})
         label = ("FIXED" if hit else "GAP") if gap else ("PASS" if hit else "MISS")
-        print(f'{label} rank={rank} {case["question"]} top={float(scores[order[0]]):.3f}', flush=True)
+        print(f'{label} rank={rank} {case["question"]} top={top:.3f}', flush=True)
         if not hit and not gap:
             failures.append(case["question"])
-    unrelated_cases = [{"question": question} if isinstance(question, str) else question for question in evaluation["unrelated"]]
-    unrelated_queries = application_ranking({"action": "prepare", "cases": unrelated_cases})
-    for case, search_text in zip(unrelated_cases, unrelated_queries, strict=True):
+    for number, (case, search_text, expression) in enumerate(zip(unrelated_cases, prepared[len(cases):], expressions[len(cases):], strict=True)):
         question = case["question"]
-        score = float(np.max(matrix @ embedder.embed(search_text))) if search_text is not None else None
-        rejected = score is None or score < manifest["retrieval"]["minSimilarity"]
-        report["unrelated"].append({"question": question, "searchText": search_text, "maxSimilarity": score, "rejected": rejected})
-        top = f"{score:.3f}" if score is not None else "outside scope"
-        print(f'{"REJECT" if rejected else "ACCEPT"} {question} top={top}', flush=True)
-        if not rejected:
+        known = number >= len(evaluation["unrelated"])
+        # Rejected means the app would answer "no information": nothing is selected.
+        selected, top = select(search_text, expression) if search_text is not None else ([], None)
+        rejected = not selected
+        report["knownAccepted" if known else "unrelated"].append({"question": question, "searchText": search_text, "maxSimilarity": top,
+                                   "rejected": rejected, "results": summary(selected)})
+        score = f"{top:.3f}" if top is not None else "outside scope"
+        label = ("FIXED" if rejected else "KNOWN") if known else ("REJECT" if rejected else "ACCEPT")
+        print(f'{label} {question} top={score}', flush=True)
+        if not rejected and not known:
             failures.append(question)
     keyword_connection.close()
     report["recallAt4"] = sum(case["hit"] for case in report["questions"]) / len(evaluation["questions"])

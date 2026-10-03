@@ -16,10 +16,10 @@ function fold(text: string): string {
 }
 
 // These openers point back at the previous question.
-const ANAPHORIC = /^(?:a co (?:wtedy|teraz|dalej)|a jak (?:to|tam|wtedy)|(?:i )?co (?:wtedy|teraz|dalej)|czy to|jak to|ile tego)\b/;
+const ANAPHORIC = /^(?:a co (?:wtedy|teraz|dalej)|a jak (?:tam|wtedy)|(?:i )?co (?:wtedy|teraz|dalej))\b/;
 // These can also start a question about a new topic, so they only count when
 // the question is too short to name one.
-const ELLIPTICAL = /^(?:a gdzie|i co|dlaczego)\b/;
+const ELLIPTICAL = /^(?:a gdzie|i co|dlaczego|czy to|(?:a )?jak to|ile tego)\b/;
 const ELLIPTICAL_MAX_WORDS = 4;
 
 function isFollowUp(question: string): boolean {
@@ -48,16 +48,19 @@ function normalizeQuestion(question: string): string | null {
 
 export class KnowledgeConversation {
   private previousQuestion?: string;
+  private previousFollowUp?: string;
   private history: ConversationTurn[] = [];
 
   prepareQuestion(question: string) {
     const current = normalizeQuestion(question.trim());
     // An "A jak ..." prefix alone does not imply the same topic (e.g. cooking).
     const followUp = current !== null && isFollowUp(current);
+    // "Dlaczego?" after "A gdzie się schować?" refers to that follow-up, not only to the topic.
     const searchText = followUp && this.previousQuestion
-      ? `${this.previousQuestion}\n${current}` : current;
+      ? [this.previousQuestion, this.previousFollowUp, current].filter(Boolean).join('\n') : current;
     // Remember the user's topic before retrieval, including turns with no sources.
     if (!followUp) this.previousQuestion = current ?? undefined;
+    this.previousFollowUp = followUp ? current : undefined;
     return { searchText, history: [...this.history] };
   }
 
@@ -68,6 +71,7 @@ export class KnowledgeConversation {
 
   reset() {
     this.previousQuestion = undefined;
+    this.previousFollowUp = undefined;
     this.history = [];
   }
 }
