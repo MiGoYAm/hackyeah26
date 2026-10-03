@@ -58,6 +58,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1a64781d-fea2-48e9-9137-f55ebb08930e"
+      }
+    },
+    "owner": "mehalatii"
   }
 }
