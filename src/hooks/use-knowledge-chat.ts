@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { models, useModel, useResourceDownload } from 'react-native-executorch';
 
+import { cleanAnswer } from '@/services/rag/answer';
 import { acquireRetrieval } from '@/services/rag/retrieval';
 import { KnowledgeConversation } from '@/services/rag/conversation';
 import { createKnowledgeRunner } from '@/services/rag/runner';
@@ -81,7 +82,7 @@ export function useKnowledgeChat() {
       const result = await model.generate(question, history, sources, controller.signal, (token) => {
         if (!mounted.current || controller.signal.aborted || generationFinished) return;
         streamed += token;
-        update({ text: streamed });
+        update({ text: cleanAnswer(streamed) });
       });
       generationFinished = true;
       // Final text comes from native generation, even if a token callback is delayed.
@@ -89,7 +90,7 @@ export function useKnowledgeChat() {
       conversation.current.rememberReply(question, result.text);
       return true;
     } catch (error) {
-      if (controller.signal.aborted) update({ text: streamed || 'Odpowiedź została zatrzymana.', interrupted: true, sources: undefined });
+      if (controller.signal.aborted) update({ text: cleanAnswer(streamed) || 'Odpowiedź została zatrzymana.', interrupted: true, sources: undefined });
       else {
         const message = error instanceof Error ? error.message : String(error);
         if (mounted.current) setSendError(message);
