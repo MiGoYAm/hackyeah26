@@ -29,7 +29,7 @@ export function selectSources(vectors: Source[], keywordIds: string[], config: R
   const selected: Source[] = [];
   const pages = new Set<string>();
   for (const { source } of ranked) {
-    const page = `${source.documentId}:${source.page}`;
+    const page = `${source.documentId}:${source.page ?? source.id}`;
     if (pages.has(page)) continue;
     pages.add(page);
     selected.push(source);

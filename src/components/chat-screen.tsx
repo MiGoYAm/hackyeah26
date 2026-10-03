@@ -93,9 +93,9 @@ export function ChatScreen() {
               ) : (
                 <ThemedView type="backgroundElement" style={[styles.bubble, styles.assistantBubble]}>
                   <ThemedText>{item.text || '…'}</ThemedText>
-                  {item.sources?.map((source, index) => (
+                  {item.sources?.map((source) => (
                     <ThemedText key={source.id} type="small" themeColor="textSecondary" style={styles.source}>
-                      [{index + 1}] {source.title}, strona PDF {source.page}
+                      [{source.reference}] {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
                     </ThemedText>
                   ))}
                 </ThemedView>

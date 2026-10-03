@@ -25,6 +25,17 @@ async function copyAsset(moduleId: number, target: File, expectedSize: number, m
   await temporary.move(target);
 }
 
+// Versioned names never overwrite a copy that is still open, so older ones pile up.
+function removeStale(directory: Directory, pattern: RegExp, current: string) {
+  try {
+    for (const entry of directory.list()) {
+      if (pattern.test(entry.name) && !entry.name.startsWith(current)) entry.delete();
+    }
+  } catch {
+    // Leftovers only cost storage; the chat works without this cleanup.
+  }
+}
+
 export async function prepareKnowledgeAssets() {
   const databasePath = Platform.OS === 'ios' ? IOS_LIBRARY_PATH : ANDROID_DATABASE_PATH;
   if (!databasePath) throw new Error('Nie można otworzyć lokalnej bazy wiedzy.');
@@ -37,6 +48,8 @@ export async function prepareKnowledgeAssets() {
   await copyAsset(databaseAsset, new File(databaseDirectory, manifest.database.filename), manifest.database.size, manifest.database.md5);
   await copyAsset(embeddingAsset, model, manifest.model.size);
   await copyAsset(tokenizerAsset, tokenizer, manifest.model.tokenizerSize, manifest.model.tokenizerMd5);
+  removeStale(databaseDirectory, /^knowledge_pl_[0-9a-f]+\.db/, manifest.database.filename);
+  removeStale(new Directory(Paths.document, 'rag-models'), /./, manifest.model.revision);
   return {
     databaseName: manifest.database.filename,
     modelPath: model.uri.replace(/^file:\/\//, ''),

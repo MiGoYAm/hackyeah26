@@ -5,9 +5,9 @@ import { cleanAnswer } from '@/services/rag/answer';
 import { acquireRetrieval } from '@/services/rag/retrieval';
 import { KnowledgeConversation } from '@/services/rag/conversation';
 import { createKnowledgeRunner } from '@/services/rag/runner';
-import type { ChatPhase, ConversationTurn, Source } from '@/services/rag/types';
+import type { ChatPhase, CitedSource, ConversationTurn, Source } from '@/services/rag/types';
 
-export type ChatMessage = ConversationTurn & { id: string; sources?: Source[]; interrupted?: boolean };
+export type ChatMessage = ConversationTurn & { id: string; sources?: CitedSource[]; interrupted?: boolean };
 
 export function useKnowledgeChat() {
   const { resource, downloadProgress, downloadError } = useResourceDownload(models.llm.BIELIK_V3_1_5B.XNNPACK_8DA4W);
@@ -77,7 +77,6 @@ export function useKnowledgeChat() {
         update({ text: 'Nie znalazłem informacji na ten temat w polskich poradnikach.' });
         return true;
       }
-      update({ sources });
       setPhase('generating');
       const result = await model.generate(question, history, sources, controller.signal, (token) => {
         if (!mounted.current || controller.signal.aborted || generationFinished) return;

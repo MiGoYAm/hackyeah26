@@ -38,6 +38,16 @@ export function cleanAnswer(text: string): string {
     .trim();
 }
 
+// A small model sometimes cites a source it was never given; drop that number, keep the advice.
+export function dropUnknownCitations(text: string, sourceCount: number): string {
+  return text
+    .replace(/[ \t]*\[(\d+)\]/g, (citation, number) => {
+      const reference = Number(number);
+      return reference >= 1 && reference <= sourceCount ? citation : '';
+    })
+    .trim();
+}
+
 export function finalizeAnswer(text: string): string {
   const repeated = repetitionStart(text);
   if (repeated === -1) return cleanAnswer(text);

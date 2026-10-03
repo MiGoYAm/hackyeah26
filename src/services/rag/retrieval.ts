@@ -1,5 +1,4 @@
 import { OPSQLiteVectorStore } from '@react-native-rag/op-sqlite';
-import type { QueryResult } from 'react-native-rag';
 
 import manifest from '../../../assets/offline/rag/manifest.json';
 import { prepareKnowledgeAssets } from './assets';
@@ -7,17 +6,18 @@ import { PolishEmbeddings } from './embeddings';
 import { keywordExpression, selectSources } from './ranking';
 import type { Source } from './types';
 
-function toSource(result: QueryResult): Source {
-  const metadata = result.metadata;
+function toSource(row: Record<string, unknown>): Source {
+  const metadata = typeof row.metadata === 'string' ? JSON.parse(row.metadata) : undefined;
   if (
-    typeof result.document !== 'string' || metadata?.language !== 'pl' || typeof metadata.documentId !== 'string' ||
-    typeof metadata.title !== 'string' || typeof metadata.publisher !== 'string' ||
-    typeof metadata.page !== 'number' || typeof metadata.year !== 'number'
+    typeof row.id !== 'string' || typeof row.document !== 'string' || typeof row.similarity !== 'number' ||
+    metadata?.language !== 'pl' || typeof metadata.documentId !== 'string' ||
+    typeof metadata.title !== 'string' || typeof metadata.publisher !== 'string' || typeof metadata.year !== 'number' ||
+    (typeof metadata.page !== 'number' && typeof metadata.url !== 'string')
   ) throw new Error('Nieprawidłowe źródło w bazie wiedzy.');
   return {
-    id: result.id, documentId: metadata.documentId, title: metadata.title,
-    publisher: metadata.publisher, year: metadata.year, page: metadata.page,
-    text: result.document, similarity: result.similarity,
+    id: row.id, documentId: metadata.documentId, title: metadata.title,
+    publisher: metadata.publisher, year: metadata.year, page: metadata.page, url: metadata.url,
+    text: row.document, similarity: row.similarity,
   };
 }
 
@@ -43,7 +43,8 @@ export async function acquireRetrieval() {
         leases -= 1;
         if (leases === 0) {
           shared = undefined;
-          closing = service.dispose();
+          // A failed close must not block the next screen from reopening the store.
+          closing = service.dispose().catch(() => {});
         }
       },
     };
@@ -78,13 +79,21 @@ export async function createRetrieval() {
     const loadedStore = store;
     return {
       async search(question: string): Promise<Source[]> {
-        const results = await loadedStore.query({ queryText: question });
+        const vector = await embeddings.embed(question);
+        // The adapter's query() returns every row with its embedding. Only rows
+        // above the threshold can be selected, and they keep their rank.
+        const results = await loadedStore.db.execute(
+          'SELECT id, document, metadata, similarity FROM (SELECT id, document, metadata, ' +
+          '1-vector_distance_cos(embedding, vector(?)) AS similarity FROM vectors) ' +
+          'WHERE similarity >= ? ORDER BY similarity DESC',
+          [JSON.stringify(vector), manifest.retrieval.minSimilarity],
+        );
         const expression = keywordExpression(question, manifest.retrieval);
         const keywords = expression ? await loadedStore.db.execute(
           'SELECT id FROM keywords WHERE keywords MATCH ? ORDER BY bm25(keywords) LIMIT ?',
           [expression, manifest.retrieval.keywordCandidates],
         ) : undefined;
-        return selectSources(results.map(toSource), keywords?.rows.map((row) => String(row.id)) ?? [], manifest.retrieval);
+        return selectSources(results.rows.map(toSource), keywords?.rows.map((row) => String(row.id)) ?? [], manifest.retrieval);
       },
       async dispose() { await loadedStore.unload(); },
     };

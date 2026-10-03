@@ -39,11 +39,11 @@ OP-SQLite wykonuje dokładny ranking cosine similarity. FTS5 wyszukuje słowa kl
 
 Przed wyszukiwaniem `KnowledgeConversation` rozwija wybrane potoczne określenia: „nalot” na „atak z powietrza”, a „syreny” na „syreny alarmowe”. Rozróżnia też nalot na powierzchniach i użycia syren poza alarmowaniem. To ograniczony słownik, nie dowolne przepisywanie pytania przez LLM. FTS łączy słowa operatorem OR, aby brak czasownika z pytania w PDF-ie nie wykluczał trafnego fragmentu; wszystkie wyniki nadal muszą przejść próg semantyczny.
 
-Pytania odsyłające do poprzedniego tematu, np. „A gdzie się schować?”, korzystają z ostatniego samodzielnego pytania, również gdy wcześniejsze wyszukiwanie nie znalazło źródeł. Samo „A jak…” nie wystarcza do dziedziczenia tematu. „Nowa rozmowa” usuwa temat i historię.
+Pytania odsyłające do poprzedniego tematu, np. „A gdzie się schować?”, korzystają z ostatniego samodzielnego pytania, również gdy wcześniejsze wyszukiwanie nie znalazło źródeł. Samo „A jak…” nie wystarcza do dziedziczenia tematu, a „Dlaczego…”, „I co…” i „A gdzie…” dziedziczą go tylko w pytaniach do czterech słów. „Nowa rozmowa” usuwa temat i historię.
 
 Baza ma gotowy schemat, więc aplikacja nie wywołuje `OPSQLiteVectorStore.load()` z nieobsługiwanym przez libSQL wielopoleceniowym DDL. Przed rozpoczęciem rozmowy sprawdza liczbę rekordów, indeks słów i zgodność embeddingu kontrolnego. Nie buduje nieużywanego indeksu ANN.
 
-Bielik otrzymuje wyłącznie bieżące źródła oraz do trzech poprzednich par wypowiedzi. Tokenizer modelu mierzy cały prompt; starsze wypowiedzi i dodatkowe źródła są usuwane, aby zostawić 512 tokenów na odpowiedź. KV cache jest resetowany między pytaniami bez ponownego wczytywania wag. Brak trafnych źródeł daje stałą odpowiedź o braku informacji. Cytowania `[n]` są sprawdzane względem faktycznie przekazanych źródeł. Stop przerywa generowanie; przy wyszukiwaniu blokuje jego kontynuację po zakończeniu natywnego embeddingu.
+Bielik otrzymuje wyłącznie bieżące źródła oraz do trzech poprzednich par wypowiedzi. Tokenizer modelu mierzy cały prompt; starsze wypowiedzi i dodatkowe źródła są usuwane, aby zostawić 512 tokenów na odpowiedź. KV cache jest resetowany między pytaniami bez ponownego wczytywania wag. Brak trafnych źródeł daje stałą odpowiedź o braku informacji. Cytowania `[n]` są sprawdzane względem faktycznie przekazanych źródeł; numer spoza listy jest usuwany z odpowiedzi. Runner ExecuTorch nie ma kary za powtórzenia, więc `answer.ts` przerywa generowanie po wykryciu powtórzonego zdania i obcina powtórkę, a także usuwa Markdown, bo czat wyświetla zwykły tekst. Stop przerywa generowanie; przy wyszukiwaniu blokuje jego kontynuację po zakończeniu natywnego embeddingu.
 
 ## Walidacja
 

@@ -19,6 +19,10 @@ ASSETS = ROOT / "assets/offline/rag"
 MODEL_PATH = ASSETS / "models/multilingual_minilm_fp32.pte"
 TOKENIZER_PATH = ASSETS / "models/multilingual_minilm.tokenizer"
 MAX_INPUT_TOKENS = 126
+MARGIN = 0.08
+ICON_FONTS = {"Arrows"}
+# Broken font maps turn "mówimy" into "mBwimy" without any replacement character.
+BROKEN_LETTERS = re.compile(r"[a-ząćęłńóśźż][A-Z@][a-ząćęłńóśźż]")
 
 
 def digest(path, algorithm="sha256"):
@@ -53,8 +57,8 @@ class Embedder:
         return vector
 
 
-def clean_page(text, page_number):
-    text = unicodedata.normalize("NFKC", text).replace("\u00ad", "")
+def clean_page(text):
+    text = unicodedata.normalize("NFKC", text).replace("\u00ad", "").replace("◻", "- ")
     text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", " ", text)
     text = re.sub(r"(\w)-\s*\n\s*(\w)", r"\1\2", text)
     lines = []
@@ -65,23 +69,64 @@ def clean_page(text, page_number):
         if lines and line == lines[-1]:
             continue
         lines.append(line)
-    if lines and lines[-1] == str(page_number):
-        lines.pop()
     return "\n".join(lines)
 
 
-def page_heading(page):
-    # Preserve original body order (column-by-column), but recover short
-    # headings from their visual position: many PDFs store them after the body.
-    blocks = sorted(page.get_text("blocks"), key=lambda block: (block[1], block[0]))
+def clean_transcript(text):
+    # Timestamps and screen descriptions are not advice; the film header repeats the title.
+    text = re.sub(r"\[[^\]]*\]", " ", text)
+    text = re.sub(r"^.*?Data publikacji:[^\n]*\n", "", text, flags=re.DOTALL)
+    return re.sub(r"^\s*Narrator[^\n:]*:\s*$", "", text, flags=re.MULTILINE)
+
+
+def extract_page(page, page_number):
+    # Keep the original body order (column-by-column), but lift short headings
+    # out of the top margin: many PDFs store them after the body, and leaving
+    # them in the body too would spend the token budget on repeats.
+    height = page.rect.height
     headings = []
-    for block in blocks:
-        if block[6] != 0 or block[1] > page.rect.height * 0.08:
+    body = []
+    for block in page.get_text("dict")["blocks"]:
+        if block["type"] != 0:
             continue
-        text = re.sub(r"\s+", " ", clean_page(block[4], -1)).strip()
-        if 4 <= len(text) <= 100 and text not in headings:
-            headings.append(text)
-    return " / ".join(headings)[:140]
+        lines = []
+        for line in block["lines"]:
+            # Rotated side labels repeat the chapter name on every page.
+            if abs(line["dir"][0] - 1) > 0.01:
+                continue
+            text = "".join(span["text"] for span in line["spans"] if span["font"] not in ICON_FONTS)
+            margin = line["bbox"][1] < height * MARGIN or line["bbox"][3] > height * (1 - MARGIN)
+            if margin and re.fullmatch(r"\s*\d+\s*", text):
+                continue
+            lines.append(text)
+        text = "\n".join(lines)
+        heading = re.sub(r"\s+", " ", clean_page(text)).strip()
+        if block["bbox"][1] <= height * MARGIN and 4 <= len(heading) <= 100:
+            if heading not in headings:
+                headings.append(heading)
+        else:
+            body.append(text)
+    return " / ".join(headings)[:140], "\n".join(body)
+
+
+def web_sections(text):
+    # Only the page's own text: attachments are separate sources or unusable scans.
+    sections = []
+    inside = False
+    for line in text.splitlines():
+        if line.startswith("## Ze strony"):
+            inside = True
+            sections.append(["", []])
+        elif line.startswith(("## Z załącznika", "## Uwaga o załączniku")):
+            break
+        elif not inside or line.strip() in ("---", "-"):
+            continue
+        elif line.startswith("## ") and not line.rstrip().endswith("!"):
+            sections.append([line[3:].strip().rstrip(":"), []])
+        else:
+            # Callouts such as "## UWAGA!" introduce a sentence, not a section.
+            sections[-1][1].append(line.removeprefix("## "))
+    return [(heading, "\n".join(lines)) for heading, lines in sections]
 
 
 def split_page(text, title, tokenizer):
@@ -128,37 +173,60 @@ def build_chunks(tokenizer):
     source_manifest = []
     audit_pages = []
     seen = set()
+
+    def add(source, path, source_hash, part, text, heading, page=None):
+        for document in split_page(text, heading, tokenizer):
+            text_hash = hashlib.sha256(document.encode()).hexdigest()
+            if text_hash in seen:
+                continue
+            seen.add(text_hash)
+            metadata = {
+                **source, "documentId": source["id"], "section": heading,
+                "sourcePath": str(path.relative_to(ROOT)), "sourceSha256": source_hash,
+            }
+            if page is not None:
+                metadata["page"] = page
+            chunks.append({"id": f'{source["id"]}:{part}:{text_hash[:12]}', "document": document, "metadata": metadata})
+
     for source in sources:
         if source["language"] != "pl":
             raise ValueError("Only Polish sources are allowed")
+        if source.get("type") == "web":
+            path = ROOT / source["file"]
+            source_hash = digest(path)
+            source_manifest.append({**source, "sha256": source_hash})
+            sections = web_sections(path.read_text())
+            if not sections:
+                raise ValueError(f"No page text: {path}")
+            for index, (section, raw_text) in enumerate(sections, 1):
+                text = clean_page(raw_text)
+                audit_pages.append({"documentId": source["id"], "section": section, "text": text})
+                heading = " / ".join(filter(None, [source["title"], section]))[:140]
+                add(source, path, source_hash, f"s{index}", text, heading)
+            print(f'{source["id"]}: {len(sections)} sections', flush=True)
+            continue
         path = ROOT / "assets/offline/pdfs" / (source["id"] + ".pdf")
         reader = pymupdf.open(path)
         source_hash = digest(path)
         source_manifest.append({**source, "sha256": source_hash, "pages": len(reader)})
+        broken = 0
         for page_number, page in enumerate(reader, 1):
-            raw_text = page.get_text()
+            heading, raw_text = extract_page(page, page_number)
             if "\x00" in raw_text or "\ufffd" in raw_text:
                 raise ValueError(f"Invalid Unicode extraction: {path}, page {page_number}")
-            text = clean_page(raw_text, page_number)
-            heading = page_heading(page)
-            audit_pages.append({"documentId": source["id"], "page": page_number, "text": text})
+            broken += len(BROKEN_LETTERS.findall(raw_text))
+            text = clean_page(clean_transcript(raw_text) if source.get("transcript") else raw_text)
+            audit_pages.append({"documentId": source["id"], "page": page_number, "heading": heading, "text": text})
             # Covers, table of contents and colophons are not actionable evidence.
             contents_heading = re.sub(r"\s+", "", heading + text[:500]).upper()
             if "SPISTREŚCI" in contents_heading:
                 continue
             if len(text) < 80:
                 continue
-            for document in split_page(text, heading, tokenizer):
-                text_hash = hashlib.sha256(document.encode()).hexdigest()
-                if text_hash in seen:
-                    continue
-                seen.add(text_hash)
-                chunk_id = f'{source["id"]}:p{page_number}:{text_hash[:12]}'
-                metadata = {
-                    **source, "documentId": source["id"], "page": page_number, "section": heading,
-                    "sourcePath": str(path.relative_to(ROOT)), "sourceSha256": source_hash,
-                }
-                chunks.append({"id": chunk_id, "document": document, "metadata": metadata})
+            # A page without its own heading is still about its document's topic.
+            add(source, path, source_hash, f"p{page_number}", text, heading or source["title"], page_number)
+        if broken > 10:
+            raise ValueError(f"Broken Polish letters in the text layer: {path}")
         print(f'{source["id"]}: {len(reader)} PDF pages', flush=True)
         reader.close()
     cache = ROOT / ".rag-cache"

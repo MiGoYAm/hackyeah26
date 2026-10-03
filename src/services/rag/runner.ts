@@ -2,8 +2,8 @@ import { File } from 'expo-file-system';
 import { llm, nlp, wrapAsync, type LLMModel } from 'react-native-executorch';
 import { scheduleOnRN } from 'react-native-worklets';
 
-import { finalizeAnswer, repetitionStart } from './answer';
-import type { ConversationTurn, Source } from './types';
+import { dropUnknownCitations, finalizeAnswer, repetitionStart } from './answer';
+import type { CitedSource, ConversationTurn, Source } from './types';
 
 const SYSTEM_PROMPT = `Jesteś polskim asystentem bezpieczeństwa. Odpowiadaj krótko po polsku.
 Odpowiedź opieraj wyłącznie na źródłach dołączonych do bieżącego pytania.
@@ -57,7 +57,7 @@ export async function createKnowledgeRunner(config: LLMModel) {
     'worklet';
     return tokenizer.encode(text).length;
   });
-  let pending: Promise<{ text: string; sources: Source[] }> | undefined;
+  let pending: Promise<{ text: string; sources: CitedSource[] }> | undefined;
   let disposed = false;
 
   async function generate(
@@ -75,7 +75,7 @@ export async function createKnowledgeRunner(config: LLMModel) {
       if (signal.aborted) throw new Error('Odpowiedź została zatrzymana.');
       if (disposed) throw new Error('Rozmowa została zamknięta.');
       const sourceText = context.map((source, index) =>
-        `[${index + 1}] ${source.title}, ${source.year}, strona PDF ${source.page}\n${source.text}`
+        `[${index + 1}] ${source.title}, ${source.year}${source.page ? `, strona PDF ${source.page}` : ''}\n${source.text}`
       ).join('\n\n');
       const messages: llm.ChatMessage[] = [
         { role: 'system', content: SYSTEM_PROMPT },
@@ -92,15 +92,14 @@ export async function createKnowledgeRunner(config: LLMModel) {
     const stop = () => runner.stop();
     signal.addEventListener('abort', stop, { once: true });
     try {
-      const text = finalizeAnswer(await generateAsync(runner, prompt, tokenizerConfig.stopTokens, onToken));
+      const answer = finalizeAnswer(await generateAsync(runner, prompt, tokenizerConfig.stopTokens, onToken));
       if (signal.aborted) throw new Error('Odpowiedź została zatrzymana.');
-      for (const match of text.matchAll(/\[(\d+)\]/g)) {
-        const reference = Number(match[1]);
-        if (reference < 1 || reference > context.length) {
-          throw new Error('Asystent wskazał źródło, którego nie ma w poradnikach. Spróbuj ponownie.');
-        }
-      }
-      return { text, sources: context };
+      const text = dropUnknownCitations(answer, context.length);
+      const cited = new Set(Array.from(text.matchAll(/\[(\d+)\]/g), (match) => Number(match[1])));
+      // Sources the answer does not cite, e.g. when it reports missing information, would imply support it lacks.
+      const used = context.map((source, index): CitedSource => ({ ...source, reference: index + 1 }))
+        .filter((source) => cited.has(source.reference));
+      return { text, sources: used };
     } finally {
       signal.removeEventListener('abort', stop);
     }
