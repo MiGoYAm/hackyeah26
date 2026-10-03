@@ -5,6 +5,8 @@ import { scheduleOnRN } from 'react-native-worklets';
 import { dropUnknownCitations, finalizeAnswer, repetitionStart } from './answer';
 import type { CitedSource, ConversationTurn, Source } from './types';
 
+const MAX_NEW_TOKENS = 1024;
+
 const SYSTEM_PROMPT = `Jesteś polskim asystentem bezpieczeństwa. Odpowiadaj krótko po polsku.
 Odpowiedź opieraj wyłącznie na źródłach dołączonych do bieżącego pytania.
 Każdą wskazówkę poprzyj numerem źródła, np. [1]. Nie wymyślaj źródeł ani numerów.
@@ -23,7 +25,7 @@ function runGeneration(
   let response = '';
   let looping = false;
   runner.reset();
-  runner.generate(prompt, { temperature: 0.2, maxNewTokens: 512 }, (token) => {
+  runner.generate(prompt, { temperature: 0.2, maxNewTokens: MAX_NEW_TOKENS }, (token) => {
     if (looping || stopTokens.includes(token)) return;
     response += token;
     // Low-temperature decoding can repeat itself until the token limit.
@@ -72,7 +74,7 @@ export async function createKnowledgeRunner(config: LLMModel) {
   ) {
     const turns = history.slice(-6);
     const context = [...sources];
-    const maxTokens = runner.getKVCacheState().maxSeqLen - 512 - 16;
+    const maxTokens = runner.getKVCacheState().maxSeqLen - MAX_NEW_TOKENS - 16;
     let prompt = '';
     while (true) {
       if (signal.aborted) throw new Error('Odpowiedź została zatrzymana.');
