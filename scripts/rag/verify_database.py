@@ -35,7 +35,10 @@ def main():
         metadata = json.loads(metadata_json)
         assert metadata["language"] == "pl" and metadata["documentId"] in allowed
         source = next(source for source in manifest["sources"] if source["id"] == metadata["documentId"])
-        assert 1 <= metadata["page"] <= source["pages"]
+        if source.get("type") == "web":
+            assert "page" not in metadata and metadata["url"].startswith("https://www.gov.pl/")
+        else:
+            assert 1 <= metadata["page"] <= source["pages"]
         assert digest(ROOT / metadata["sourcePath"]) == metadata["sourceSha256"]
         vector = np.frombuffer(blob, dtype="<f4")
         assert vector.shape == (384,) and np.isfinite(vector).all()
@@ -52,11 +55,15 @@ def main():
     evaluation = json.loads((ROOT / "scripts/rag/evaluation.json").read_text())
     keyword_connection = sqlite3.connect(f"file:{database}?mode=ro", uri=True)
     assert keyword_connection.execute("SELECT COUNT(*) FROM keywords").fetchone()[0] == len(rows)
-    questions = application_ranking({"action": "prepare", "cases": evaluation["questions"]})
+    # Known gaps are questions the corpus answers but retrieval still misses.
+    # They are reported, not hidden, and do not fail the run until fixed.
+    cases = evaluation["questions"] + evaluation["knownGaps"]
+    questions = application_ranking({"action": "prepare", "cases": cases})
     expressions = application_ranking({"action": "keywords", "questions": questions, "config": manifest["retrieval"]})
-    report = {"questions": [], "unrelated": [], "chunks": len(rows)}
+    report = {"questions": [], "knownGaps": [], "unrelated": [], "chunks": len(rows)}
     failures = []
-    for case, search_text, expression in zip(evaluation["questions"], questions, expressions, strict=True):
+    for number, (case, search_text, expression) in enumerate(zip(cases, questions, expressions, strict=True)):
+        gap = number >= len(evaluation["questions"])
         started = time.perf_counter()
         scores = matrix @ embedder.embed(search_text)
         order = np.argsort(scores)[::-1]
@@ -66,11 +73,17 @@ def main():
         vectors = [{**documents[int(index)], "similarity": float(scores[index])} for index in order]
         selected = application_ranking({"action": "rank", "config": manifest["retrieval"],
                                        "cases": [{"vectors": vectors, "keywordIds": keyword_ids}]})[0]
-        hit = any(any(term in doc["text"].lower() for term in case["answerTerms"]) for doc in selected)
-        report["questions"].append({"question": case["question"], "searchText": search_text, "hit": hit,
+        # A hit is one fragment from an expected document that itself holds the
+        # answer; a generic word somewhere in the selection proves nothing.
+        rank = next((position for position, doc in enumerate(selected, 1)
+                     if doc["documentId"] in case["documents"]
+                     and any(term in doc["text"].lower() for term in case["answerTerms"])), None)
+        hit = rank is not None
+        report["knownGaps" if gap else "questions"].append({"question": case["question"], "searchText": search_text, "hit": hit, "rank": rank,
                                    "milliseconds": round((time.perf_counter() - started) * 1000), "results": selected})
-        print(f'{"PASS" if hit else "MISS"} {case["question"]} top={float(scores[order[0]]):.3f}', flush=True)
-        if not hit:
+        label = ("FIXED" if hit else "GAP") if gap else ("PASS" if hit else "MISS")
+        print(f'{label} rank={rank} {case["question"]} top={float(scores[order[0]]):.3f}', flush=True)
+        if not hit and not gap:
             failures.append(case["question"])
     unrelated_cases = [{"question": question} if isinstance(question, str) else question for question in evaluation["unrelated"]]
     unrelated_queries = application_ranking({"action": "prepare", "cases": unrelated_cases})
@@ -85,6 +98,8 @@ def main():
             failures.append(question)
     keyword_connection.close()
     report["recallAt4"] = sum(case["hit"] for case in report["questions"]) / len(evaluation["questions"])
+    report["hitsAtRank1"] = sum(case["rank"] == 1 for case in report["questions"])
+    report["meanReciprocalRank"] = round(sum(1 / case["rank"] for case in report["questions"] if case["rank"]) / len(evaluation["questions"]), 3)
     report["unrelatedRejected"] = sum(case["rejected"] for case in report["unrelated"])
     # Check vector arithmetic through libSQL too, rather than just numpy.
     subprocess.run(["uv", "run", "--python", "3.13", "--with", "libsql-experimental==0.0.55", "python", "-c",
@@ -93,7 +108,8 @@ def main():
                     "r=c.execute('SELECT document, 1-vector_distance_cos(embedding, embedding) FROM vectors LIMIT 1').fetchone(); "
                     "assert abs(r[1]-1)<0.0001; c.close()"], cwd=ROOT, check=True)
     (ROOT / "docs/research/rag-evaluation.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
-    print(f"Corpus integrity passed. Retrieval smoke recall@4: {report['recallAt4']:.0%}")
+    print(f"Corpus integrity passed. Recall@4: {report['recallAt4']:.0%}, "
+          f"rank 1: {report['hitsAtRank1']}/{len(evaluation['questions'])}, MRR: {report['meanReciprocalRank']}")
     if failures:
         sys.exit(1)
 

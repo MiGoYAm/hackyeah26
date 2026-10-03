@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "database": {
-    "filename": "knowledge_pl_9e9b01603036.db",
-    "sha256": "9e9b016030360b44d53616eebda24cd7d383bbb7e13e8dd010368438b651ce38",
-    "md5": "e771c55ca7babdc1725bd1a475c5bc11",
-    "size": 1744896,
-    "chunks": 346
+    "filename": "knowledge_pl_28c4239214d1.db",
+    "sha256": "28c4239214d17a0583b243228e8992bd28db4f385069001964aeeaef171185a3",
+    "md5": "e1443ab7645273b1538794f29fe33870",
+    "size": 3944448,
+    "chunks": 791
   },
   "model": {
     "id": "paraphrase-multilingual-MiniLM-L12-v2",
@@ -73,11 +73,242 @@
       "language": "pl",
       "sha256": "cc511d6b80eedfd517d456b1e4340b3b9c5ed8c038c27af4559612ad5b95a89a",
       "pages": 1
+    },
+    {
+      "id": "poradnik-pozar-2024",
+      "title": "Poradnik na wypadek pożaru",
+      "publisher": "RCB",
+      "year": 2024,
+      "language": "pl",
+      "sha256": "f8ecdacff33542440da726e0ee825bf50bc462f90d98d9484b9ef0af000bf8e0",
+      "pages": 19
+    },
+    {
+      "id": "poradnik-wichura-2024",
+      "title": "Poradnik na wypadek wichury",
+      "publisher": "RCB",
+      "year": 2024,
+      "language": "pl",
+      "sha256": "e1a95bbe1bfa4005ea5fbd974db5620e87903edd47d540a5d9a219e5cf3fb30f",
+      "pages": 19
+    },
+    {
+      "id": "transkrypcja-burza",
+      "title": "Burza – jak się przygotować? (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "85f698411ab570feb8cb69aabb9207c6bd93cfbfa310a3cc8aa4d0c662b8c854",
+      "pages": 3
+    },
+    {
+      "id": "transkrypcja-upal",
+      "title": "Upał – jak się przygotować? (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "fc91f8948685a864872d4d6b70a59cc607168aaef8e61fcdd4dbce8a5f5f2b30",
+      "pages": 5
+    },
+    {
+      "id": "transkrypcja-chemiczne",
+      "title": "Zagrożenia chemiczne (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "670ea5a7ce2054cd38d8424dc1101f8e2b51cfd4b38ed27e61fdf285a7af0a49",
+      "pages": 2
+    },
+    {
+      "id": "transkrypcja-biologiczne",
+      "title": "Zagrożenia biologiczne (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "88adec32203b1408c1fbd9f625dbbfd81649be46e5dcef2d65259212e33271ce",
+      "pages": 2
+    },
+    {
+      "id": "transkrypcja-radiacyjne",
+      "title": "Zagrożenia radiacyjne (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "71b844db9613d2eecbf5a5d7910e4e46f21686e1faa48ca8c98567f1d6624519",
+      "pages": 3
+    },
+    {
+      "id": "transkrypcja-jadrowe",
+      "title": "Zagrożenie jądrowe (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "803312f17b5cc782cd4929d36b2284aec0ed54ed00ae5060776d95dc2f2f8e68",
+      "pages": 3
+    },
+    {
+      "id": "transkrypcja-eksplozja",
+      "title": "Zagrożenie eksplozją (transkrypcja filmu)",
+      "publisher": "RCB",
+      "year": 2025,
+      "language": "pl",
+      "transcript": true,
+      "sha256": "b4e0b81c41257cad9c5bf997591874f6e5fea3b2683ca211db3d5a6cc3cc77e8",
+      "pages": 2
+    },
+    {
+      "id": "burza-badz-bezpieczny",
+      "type": "web",
+      "title": "Burza – bądź bezpieczny",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/burza-badz-bezpieczny.md",
+      "url": "https://www.gov.pl/web/rcb/burza--badz-bezpieczny",
+      "sha256": "a80a0aa5e1451d41f74e1dfa559d4811d15e49655e7fe21e57d4be55c59ea8fe"
+    },
+    {
+      "id": "upal-jak-przetrwac",
+      "type": "web",
+      "title": "Jak przetrwać upał?",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/upal-jak-przetrwac.md",
+      "url": "https://www.gov.pl/web/rcb/jak-przetrwac-upal2",
+      "sha256": "b4b34b60cb0848b7b3441432b2c55e094e17229442e8bd3e8aaccb169439cae4"
+    },
+    {
+      "id": "zima-bezpieczna",
+      "type": "web",
+      "title": "Bezpieczna zima",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/zima-bezpieczna.md",
+      "url": "https://www.gov.pl/web/rcb/bezpieczna-zima2",
+      "sha256": "7ebc61feb079af051d977012e52bbf501a785be8f17c086e6a157ec4badff560"
+    },
+    {
+      "id": "czad-nie-dla-czadu",
+      "type": "web",
+      "title": "Nie dla czadu",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/czad-nie-dla-czadu.md",
+      "url": "https://www.gov.pl/web/rcb/nie-dla-czadu2",
+      "sha256": "fb2924592211b504b4c34ac51c73a904b2897ab827635b26530b552b15aec14d"
+    },
+    {
+      "id": "pozar-badz-bezpieczny",
+      "type": "web",
+      "title": "Pożar – bądź bezpieczny",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/pozar-badz-bezpieczny.md",
+      "url": "https://www.gov.pl/web/rcb/pozar--badz-bezpieczny6",
+      "sha256": "2793c6d88cc312b6bbfb3bffd8221e499889a434a30620bf2213e76c3d4ca12f"
+    },
+    {
+      "id": "wichura-jak-sie-przygotowac",
+      "type": "web",
+      "title": "Wichura – jak się przygotować",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/wichura-jak-sie-przygotowac.md",
+      "url": "https://www.gov.pl/web/rcb/wichura--jak-sie-przygotowac",
+      "sha256": "8e54be43d5e109ee4b64d027910bf31ed42628e1f30af3ad42a577947a83e929"
+    },
+    {
+      "id": "woda-badz-bezpieczny",
+      "type": "web",
+      "title": "Bądź bezpieczny nad wodą",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/woda-badz-bezpieczny.md",
+      "url": "https://www.gov.pl/web/rcb/badz-bezpieczny-nad-woda2",
+      "sha256": "8f3d50d7e09cda570558d6232b09a17bf8de5ad0f43997a062f1dfdee905c3b7"
+    },
+    {
+      "id": "stopnie-alarmowe",
+      "type": "web",
+      "title": "Stopnie alarmowe",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/stopnie-alarmowe.md",
+      "url": "https://www.gov.pl/web/rcb/stopnie-alarmowe2",
+      "sha256": "92dcf752c57497a6a5283b2c0cf5a2c8d09fe1458a289f4e6420da1a4c51d270"
+    },
+    {
+      "id": "cbrne-zagrozenie-chemiczne",
+      "type": "web",
+      "title": "Zagrożenia chemiczne",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/cbrne-zagrozenie-chemiczne.md",
+      "url": "https://www.gov.pl/web/rcb/zagrozenia-chemiczne",
+      "sha256": "5c122534f8f078f89943b17e2c9c20f326679e6c847e9e3cdd15dc03badc7730"
+    },
+    {
+      "id": "cbrne-zagrozenie-biologiczne",
+      "type": "web",
+      "title": "Zagrożenia biologiczne",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/cbrne-zagrozenie-biologiczne.md",
+      "url": "https://www.gov.pl/web/rcb/zagrozenia-biologiczne",
+      "sha256": "4601260e73632e86cc3861a417dcd5e9557effd470c6a2e1fb6b24359241454b"
+    },
+    {
+      "id": "cbrne-zagrozenie-radiacyjne",
+      "type": "web",
+      "title": "Zagrożenia radiacyjne",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/cbrne-zagrozenie-radiacyjne.md",
+      "url": "https://www.gov.pl/web/rcb/zagrozenia-radiacyjne",
+      "sha256": "74746c75818528b0f805ce16d9459fa233d0c39ee4e19e3446f75bd865fa7f7a"
+    },
+    {
+      "id": "cbrne-zagrozenie-jadrowe",
+      "type": "web",
+      "title": "Zagrożenie jądrowe",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/cbrne-zagrozenie-jadrowe.md",
+      "url": "https://www.gov.pl/web/rcb/zagrozenie-jadrowe",
+      "sha256": "b181f667f3f45fb6dfb71ae2aa29b95e2d4267516f7ef12fc9d7f42f0b0fad8a"
+    },
+    {
+      "id": "cbrne-zagrozenie-eksplozja",
+      "type": "web",
+      "title": "Zagrożenie eksplozją",
+      "publisher": "RCB, gov.pl",
+      "year": 2026,
+      "language": "pl",
+      "file": "src/data/survival/text/cbrne-zagrozenie-eksplozja.md",
+      "url": "https://www.gov.pl/web/rcb/zagrozenie-eksplozja",
+      "sha256": "d14d1043059b8d9b5b55a4d35d5d80cc35449b249452aa4864d6f387da8dc24b"
     }
   ],
   "probe": {
-    "text": "112\nnumer alarmowy\n(jeśli nie możesz zadzwonić,\nwezwij pomoc, korzystając\nz aplikacji\nA Alarm112)\n999\npogotowie ratunkowe\n998\nstraż pożarna\n997\npolicja\n994\npogotowie wodno-kanalizacyjne\n993\npogotowie ciepłownicze\n992\npogotowie gazownicze\n991\npogotowie energetyczne\n987\nwojewódzkie centrum zarządzania\nkryzysowego\n986\nstraż miejska\n800 70 22 22\ncentrum wsparcia dla osób",
-    "id": "poradnik-bezpieczenstwa-2025-pl:p3:30770be26cce"
+    "text": "Poradnik bezpieczeństwa 2025\n112\nnumer alarmowy\n(jeśli nie możesz zadzwonić,\nwezwij pomoc, korzystając\nz aplikacji\nAlarm112)\n999\npogotowie ratunkowe\n998\nstraż pożarna\n997\npolicja\n994\npogotowie wodno-kanalizacyjne\n993\npogotowie ciepłownicze\n992\npogotowie gazownicze\n991\npogotowie energetyczne\n987\nwojewódzkie centrum zarządzania\nkryzysowego\n986\nstraż miejska\n800 70 22 22\ncentrum wsparcia dla osób",
+    "id": "poradnik-bezpieczenstwa-2025-pl:p3:488c7ab3da49"
   },
   "retrieval": {
     "minSimilarity": 0.5,
