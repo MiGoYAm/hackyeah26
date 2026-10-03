@@ -1,0 +1,2327 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap via QLever osm-planet (ODbL, 2026-10-03)",
+    "counts_worldwide": {
+      "bunker_type_bomb_shelter": 5139,
+      "shelter_type_bomb_shelter": 565
+    },
+    "scope": "bbox 13.0-24.5/48.5-55.5 (PL + pogranicze DE/CZ/SK/UA/BY/LT)",
+    "count": 136,
+    "note_pl": "Zawiera obiekty z pogranicza (np. klaster Grodno/BY, Berlin/DE, Lwow/UA). Do uzytku w aplikacji filtruj do PL."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.979823,
+          51.145544
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 10188335238,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/10188335238"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.841578,
+          53.685572
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 10586517122,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/10586517122"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.987287,
+          51.14941
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 11240785925,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/11240785925"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.537377,
+          54.579849
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12116446818,
+        "kind": "bomb_bunker",
+        "name": "Schron przeciwlotniczy nr 1",
+        "osm_url": "https://www.openstreetmap.org/node/12116446818"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.534877,
+          54.581727
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12116452858,
+        "kind": "bomb_bunker",
+        "name": "Schron nr 2",
+        "osm_url": "https://www.openstreetmap.org/node/12116452858"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.810617,
+          53.699613
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12128326640,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/12128326640"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.056709,
+          49.783211
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12209509085,
+        "kind": "bomb_bunker",
+        "name": "Укриття",
+        "osm_url": "https://www.openstreetmap.org/node/12209509085"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.840796,
+          53.705079
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12456035586,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/12456035586"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.906086,
+          51.235263
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12474501628,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/12474501628"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.402606,
+          54.185028
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 13270314039,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/13270314039"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.815064,
+          53.713098
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7500802359,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/7500802359"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.293142,
+          52.585408
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9084795201,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9084795201"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.960593,
+          49.604067
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9425516008,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9425516008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.839981,
+          53.679814
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9538520115,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9538520115"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.83718,
+          53.680917
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406143,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406143"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.838143,
+          53.681227
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406144,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406144"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.835918,
+          53.680797
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406145,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406145"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.835429,
+          53.680056
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406146,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406146"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832239,
+          53.676723
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406147,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406147"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.851633,
+          53.674575
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406148,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406148"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832165,
+          53.675479
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406149,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406149"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.828536,
+          53.677235
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406150,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406150"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.840187,
+          53.682669
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406152,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406152"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.819415,
+          53.672358
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406153,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406153"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.836736,
+          53.681117
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406157,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406157"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.828689,
+          53.679798
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406161,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406161"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.829096,
+          53.679528
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406162,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406162"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.807916,
+          53.672596
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406165,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406165"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.826098,
+          53.711547
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406166,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406166"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.856929,
+          53.68969
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406167,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406167"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832979,
+          53.676462
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406168,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406168"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.846433,
+          53.654239
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406171,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406171"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.84239,
+          53.655893
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406172,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406172"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8433,
+          53.65486
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406174,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406174"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.852718,
+          53.702466
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406175,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406175"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.804396,
+          53.690994
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406176,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406176"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.821152,
+          53.700527
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406177,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406177"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.816522,
+          53.700941
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406178,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406178"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.811902,
+          53.701699
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406179,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406179"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.813458,
+          53.695946
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406180,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406180"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.831522,
+          53.698626
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406181,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406181"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.800329,
+          53.707395
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406182,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406182"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.827678,
+          53.69079
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406183,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406183"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.828058,
+          53.690822
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406184,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406184"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.825821,
+          53.690587
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406185,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406185"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.829744,
+          53.685572
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406186,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406186"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.847812,
+          53.676301
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406187,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406187"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.848669,
+          53.676198
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406188,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406188"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.859333,
+          53.676725
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406189,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406189"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.843531,
+          53.682054
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406190,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406190"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.84683,
+          53.684777
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406192,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406192"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.836379,
+          53.678855
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406193,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406193"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.837036,
+          53.678651
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406194,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406194"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.840329,
+          53.681869
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406195,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406195"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.838052,
+          53.676356
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406196,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406196"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.833237,
+          53.674179
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406197,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406197"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.831446,
+          53.675561
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406198,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406198"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832413,
+          53.676004
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406199,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406199"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.834367,
+          53.676114
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406200,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406200"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.910958,
+          50.339085
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9574748687,
+        "kind": "bomb_bunker",
+        "name": "Podziemny schron przeciwlotniczy",
+        "osm_url": "https://www.openstreetmap.org/node/9574748687"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2718994,
+          52.53634
+        ]
+      },
+      "properties": {
+        "osm_type": "relation",
+        "osm_id": 7682216,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/relation/7682216"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.8630788,
+          52.3985692
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1027670779,
+        "kind": "bomb_bunker",
+        "name": "Schron artyleryjski A VIIa",
+        "osm_url": "https://www.openstreetmap.org/way/1027670779"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.7036635,
+          51.0271101
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1164744591,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/1164744591"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.2260862,
+          48.9886558
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1263557164,
+        "kind": "bomb_bunker",
+        "name": "Kryt civilnej ochrany pod Kalváriou",
+        "osm_url": "https://www.openstreetmap.org/way/1263557164"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.3841565,
+          52.5746903
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1334519104,
+        "kind": "bomb_bunker",
+        "name": "Luna Bunker",
+        "osm_url": "https://www.openstreetmap.org/way/1334519104"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.2449689,
+          50.7344086
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1418745285,
+        "kind": "bomb_bunker",
+        "name": "Smržovský bunkr",
+        "osm_url": "https://www.openstreetmap.org/way/1418745285"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.310749,
+          50.0957545
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1443618723,
+        "kind": "bomb_bunker",
+        "name": "bývalý protiletecký kryt v Divoké Šárce",
+        "osm_url": "https://www.openstreetmap.org/way/1443618723"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.381227,
+          52.4783184
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 186397705,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/186397705"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0682634,
+          52.4026173
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 30749875,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/30749875"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4372953,
+          52.4767027
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 317329358,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/317329358"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8182415,
+          53.7040539
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 379968502,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/379968502"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4696346,
+          54.7195533
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 428769364,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/428769364"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4693872,
+          54.7193487
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 428769365,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/428769365"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4690276,
+          54.7192334
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 428813085,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/428813085"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4742592,
+          54.7203146
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 450501587,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/450501587"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4773594,
+          54.7193615
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 450501588,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/450501588"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4697164,
+          54.7193803
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 460376532,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/460376532"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.4632077,
+          54.7346615
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 460376536,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/460376536"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2718666,
+          52.5367614
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 505566315,
+        "kind": "bomb_bunker",
+        "name": "Siemensdamm",
+        "osm_url": "https://www.openstreetmap.org/way/505566315"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5689011,
+          53.424292
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 60612757,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/60612757"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.2350429,
+          52.7357588
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 666314758,
+        "kind": "bomb_bunker",
+        "name": "Schron przeciwlotniczy",
+        "osm_url": "https://www.openstreetmap.org/way/666314758"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.381237,
+          52.4781453
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 68440616,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/68440616"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.5390459,
+          51.149757
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 832937435,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/832937435"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.1136055,
+          52.0564497
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 932355553,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/932355553"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.8618741,
+          52.3913586
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 974435676,
+        "kind": "bomb_bunker",
+        "name": "Schron piechoty J1 VIII",
+        "osm_url": "https://www.openstreetmap.org/way/974435676"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.328067,
+          50.044333
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 13853791145,
+        "kind": "bomb_shelter",
+        "name": "Komora dodatečného vstupu ochranného systému metra (Dodatečný vstup do civilního úkrytu)",
+        "osm_url": "https://www.openstreetmap.org/node/13853791145"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.025104,
+          49.854134
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 2866297720,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/2866297720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.815064,
+          53.713098
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7500802359,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/7500802359"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.839981,
+          53.679814
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9538520115,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9538520115"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.83718,
+          53.680917
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406143,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406143"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.838143,
+          53.681227
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406144,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406144"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.835918,
+          53.680797
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406145,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406145"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.835429,
+          53.680056
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406146,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406146"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832239,
+          53.676723
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406147,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406147"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.851633,
+          53.674575
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406148,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406148"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832165,
+          53.675479
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406149,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406149"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.828536,
+          53.677235
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406150,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406150"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.840187,
+          53.682669
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406152,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406152"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.819415,
+          53.672358
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406153,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406153"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.836736,
+          53.681117
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406157,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406157"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.828689,
+          53.679798
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406161,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406161"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.829096,
+          53.679528
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406162,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406162"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.807916,
+          53.672596
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406165,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406165"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.826098,
+          53.711547
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406166,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406166"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.856929,
+          53.68969
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406167,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406167"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832979,
+          53.676462
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406168,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406168"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.846433,
+          53.654239
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406171,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406171"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.84239,
+          53.655893
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406172,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406172"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8433,
+          53.65486
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406174,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406174"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.852718,
+          53.702466
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406175,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406175"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.804396,
+          53.690994
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406176,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406176"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.821152,
+          53.700527
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406177,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406177"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.816522,
+          53.700941
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406178,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406178"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.811902,
+          53.701699
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406179,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406179"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.813458,
+          53.695946
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406180,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406180"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.831522,
+          53.698626
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406181,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406181"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.800329,
+          53.707395
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406182,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406182"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.827678,
+          53.69079
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406183,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406183"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.828058,
+          53.690822
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406184,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406184"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.825821,
+          53.690587
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406185,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406185"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.829744,
+          53.685572
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406186,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406186"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.847812,
+          53.676301
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406187,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406187"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.848669,
+          53.676198
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406188,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406188"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.859333,
+          53.676725
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406189,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406189"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.843531,
+          53.682054
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406190,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406190"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.84683,
+          53.684777
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406192,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406192"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.836379,
+          53.678855
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406193,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406193"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.837036,
+          53.678651
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406194,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406194"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.840329,
+          53.681869
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406195,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406195"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.838052,
+          53.676356
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406196,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406196"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.833237,
+          53.674179
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406197,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406197"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.831446,
+          53.675561
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406198,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406198"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.832413,
+          53.676004
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406199,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406199"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.834367,
+          53.676114
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9569406200,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9569406200"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8182415,
+          53.7040539
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 379968502,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/379968502"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.0745559,
+          49.7343197
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 638733180,
+        "kind": "bomb_shelter",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/638733180"
+      }
+    }
+  ]
+}

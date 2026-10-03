@@ -1,0 +1,185 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap via QLever osm-planet (ODbL, 2026-10-03)",
+    "counts_worldwide": {
+      "bunker_type_bomb_shelter": 5139,
+      "shelter_type_bomb_shelter": 565
+    },
+    "scope": "Polska (point-in-polygon, low-res)",
+    "count": 10,
+    "note_pl": "OSM ma w PL tylko pojedyncze schrony (tu 10, w tym historyczne fortyfikacje) - NIE zastepuje oficjalnej ewidencji PSP (234735 obiektow)."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type":   "Point",
+        "coordinates": [
+          18.537377,
+          54.579849
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12116446818,
+        "kind": "bomb_bunker",
+        "name": "Schron przeciwlotniczy nr 1",
+        "osm_url": "https://www.openstreetmap.org/node/12116446818"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.534877,
+          54.581727
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12116452858,
+        "kind": "bomb_bunker",
+        "name": "Schron nr 2",
+        "osm_url": "https://www.openstreetmap.org/node/12116452858"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.906086,
+          51.235263
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 12474501628,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/12474501628"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.402606,
+          54.185028
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 13270314039,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/13270314039"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.960593,
+          49.604067
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9425516008,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/node/9425516008"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.910958,
+          50.339085
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 9574748687,
+        "kind": "bomb_bunker",
+        "name": "Podziemny schron przeciwlotniczy",
+        "osm_url": "https://www.openstreetmap.org/node/9574748687"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.8630788,
+          52.3985692
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1027670779,
+        "kind": "bomb_bunker",
+        "name": "Schron artyleryjski A VIIa",
+        "osm_url": "https://www.openstreetmap.org/way/1027670779"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.5689011,
+          53.424292
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 60612757,
+        "kind": "bomb_bunker",
+        "name": null,
+        "osm_url": "https://www.openstreetmap.org/way/60612757"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.2350429,
+          52.7357588
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 666314758,
+        "kind": "bomb_bunker",
+        "name": "Schron przeciwlotniczy",
+        "osm_url": "https://www.openstreetmap.org/way/666314758"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.8618741,
+          52.3913586
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 974435676,
+        "kind": "bomb_bunker",
+        "name": "Schron piechoty J1 VIII",
+        "osm_url": "https://www.openstreetmap.org/way/974435676"
+      }
+    }
+  ]
+}
