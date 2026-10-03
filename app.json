@@ -53,7 +53,8 @@
             "assets/offline/rag/knowledge_pl.db"
           ]
         }
-      ]
+      ],
+      "@bacons/apple-targets"
     ],
     "experiments": {
       "typedRoutes": true,
