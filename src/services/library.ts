@@ -5,7 +5,11 @@ import eksplozja from '@/data/survival/text/cbrne-zagrozenie-eksplozja.md';
 import jadrowe from '@/data/survival/text/cbrne-zagrozenie-jadrowe.md';
 import radiacyjne from '@/data/survival/text/cbrne-zagrozenie-radiacyjne.md';
 import czad from '@/data/survival/text/czad-nie-dla-czadu.md';
+import gazUlatnia from '@/data/survival/text/gaz-co-robic-gdy-ulatnia-sie.md';
+import gazWDomu from '@/data/survival/text/gaz-w-domu.md';
 import pozar from '@/data/survival/text/pozar-badz-bezpieczny.md';
+import pozarLasu from '@/data/survival/text/pozar-lasu-jak-sie-zachowac.md';
+import pozarLasuZgloszenie from '@/data/survival/text/pozar-lasu-zagrozenie-pozarowe.md';
 import stopnieAlarmowe from '@/data/survival/text/stopnie-alarmowe.md';
 import upal from '@/data/survival/text/upal-jak-przetrwac.md';
 import wichura from '@/data/survival/text/wichura-jak-sie-przygotowac.md';
@@ -26,6 +30,8 @@ export const LIBRARY_GROUPS: { title: string; topics: LibraryTopic[] }[] = [
       { id: 'upal', title: 'Jak przetrwać upał?', url: 'https://www.gov.pl/web/rcb/jak-przetrwac-upal2', text: upal },
       { id: 'zima', title: 'Bezpieczna zima', url: 'https://www.gov.pl/web/rcb/bezpieczna-zima2', text: zima },
       { id: 'pozar', title: 'Pożar – bądź bezpieczny', url: 'https://www.gov.pl/web/rcb/pozar--badz-bezpieczny6', text: pozar },
+      { id: 'pozar-lasu', title: 'Fale upałów i zagrożenie pożarowe w lasach', url: 'https://www.gov.pl/web/klimat/fale-upalow-i-zagrozenie-pozarowe-w-lasach-sluzby-apeluja-o-ostroznosc', text: pozarLasu },
+      { id: 'pozar-lasu-zgloszenie', title: 'Zagrożenie pożarowe lasów', url: 'https://www.gov.pl/web/kppsp-ketrzyn/zagrozenie-pozarowe-lasow', text: pozarLasuZgloszenie },
       { id: 'woda', title: 'Bądź bezpieczny nad wodą', url: 'https://www.gov.pl/web/rcb/badz-bezpieczny-nad-woda2', text: woda },
     ],
   },
@@ -43,6 +49,8 @@ export const LIBRARY_GROUPS: { title: string; topics: LibraryTopic[] }[] = [
     title: 'Dom i alarmy',
     topics: [
       { id: 'czad', title: 'Nie dla czadu', url: 'https://www.gov.pl/web/rcb/nie-dla-czadu2', text: czad },
+      { id: 'gaz-ulatnia', title: 'Co robić gdy ulatnia się gaz?', url: 'https://www.gov.pl/web/kppsp-turek/co-robic-gdy-ulatnia-sie-gaz', text: gazUlatnia },
+      { id: 'gaz-w-domu', title: 'Gaz w domu', url: 'https://www.gov.pl/web/kwpsp-opole/prewencja-spoleczna-porady-gaz-w-domu', text: gazWDomu },
       { id: 'stopnie-alarmowe', title: 'Stopnie alarmowe', url: 'https://www.gov.pl/web/rcb/stopnie-alarmowe2', text: stopnieAlarmowe },
     ],
   },

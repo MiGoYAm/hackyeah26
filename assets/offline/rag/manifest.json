@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "database": {
-    "filename": "knowledge_pl_e73ea3fd080a.db",
-    "sha256": "e73ea3fd080a8160ffb2662b301d1c60ab6a67e96d345e9cda2a669c8c4e6f61",
-    "md5": "51dc71d26523baae1d1e3902034f1106",
-    "size": 3936256,
-    "chunks": 786
+    "filename": "knowledge_pl_8ea96621038f.db",
+    "sha256": "8ea96621038f77470202a94817f4048bc38b3cd7ca6cd384d90f8f1d9623acd4",
+    "md5": "cb76a9aaf9885db129b653800550e5da",
+    "size": 4100096,
+    "chunks": 818
   },
   "model": {
     "id": "paraphrase-multilingual-MiniLM-L12-v2",
@@ -291,6 +291,46 @@
       "file": "src/data/survival/text/cbrne-zagrozenie-eksplozja.md",
       "url": "https://www.gov.pl/web/rcb/zagrozenie-eksplozja",
       "sha256": "d14d1043059b8d9b5b55a4d35d5d80cc35449b249452aa4864d6f387da8dc24b"
+    },
+    {
+      "id": "gaz-w-domu",
+      "type": "web",
+      "title": "Gaz w domu",
+      "publisher": "KW PSP w Opolu, gov.pl",
+      "language": "pl",
+      "file": "src/data/survival/text/gaz-w-domu.md",
+      "url": "https://www.gov.pl/web/kwpsp-opole/prewencja-spoleczna-porady-gaz-w-domu",
+      "sha256": "028b57d62e1f6b9fb461d4730ec4f02ecf708a5da90ded6d8b9083beb37ed6fc"
+    },
+    {
+      "id": "gaz-co-robic-gdy-ulatnia-sie",
+      "type": "web",
+      "title": "Co robić gdy ulatnia się gaz?",
+      "publisher": "KP PSP w Turku, gov.pl",
+      "language": "pl",
+      "file": "src/data/survival/text/gaz-co-robic-gdy-ulatnia-sie.md",
+      "url": "https://www.gov.pl/web/kppsp-turek/co-robic-gdy-ulatnia-sie-gaz",
+      "sha256": "24bf40355a57f5d2df4a5fc3e5e725cfe469fc1b1668a79d8c202158ae77f980"
+    },
+    {
+      "id": "pozar-lasu-jak-sie-zachowac",
+      "type": "web",
+      "title": "Fale upałów i zagrożenie pożarowe w lasach",
+      "publisher": "Ministerstwo Klimatu i Środowiska, gov.pl",
+      "language": "pl",
+      "file": "src/data/survival/text/pozar-lasu-jak-sie-zachowac.md",
+      "url": "https://www.gov.pl/web/klimat/fale-upalow-i-zagrozenie-pozarowe-w-lasach-sluzby-apeluja-o-ostroznosc",
+      "sha256": "b5fa408df2ee448b758ae1697eb97ccc80688bcceea0ac2b2dadf4a092d5a353"
+    },
+    {
+      "id": "pozar-lasu-zagrozenie-pozarowe",
+      "type": "web",
+      "title": "Zagrożenie pożarowe lasów",
+      "publisher": "KP PSP w Kętrzynie, gov.pl",
+      "language": "pl",
+      "file": "src/data/survival/text/pozar-lasu-zagrozenie-pozarowe.md",
+      "url": "https://www.gov.pl/web/kppsp-ketrzyn/zagrozenie-pozarowe-lasow",
+      "sha256": "3c79b5876289fb0fd3d53b1d29e220e79a158667245abce85a12be5403b17ec3"
     }
   ],
   "probe": {
