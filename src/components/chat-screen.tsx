@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   FlatList,
   KeyboardAvoidingView,
-  Platform,
   Pressable,
   StyleSheet,
   TextInput,
@@ -13,7 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { useKnowledgeChat, type ChatMessage } from '@/hooks/use-knowledge-chat';
 
@@ -75,9 +74,9 @@ export function ChatScreen() {
           </View>
         )}
 
-        <KeyboardAvoidingView
-          style={styles.flex}
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        {/* Android draws edge to edge, so the window no longer shrinks for the keyboard
+            and the view has to make room for it itself, as on iOS. */}
+        <KeyboardAvoidingView style={styles.flex} behavior="padding">
           <FlatList
             ref={listRef}
             style={styles.flex}
@@ -85,6 +84,7 @@ export function ChatScreen() {
             data={messages}
             keyExtractor={(m) => m.id}
             onContentSizeChange={() => listRef.current?.scrollToEnd({ animated: true })}
+            onLayout={() => listRef.current?.scrollToEnd({ animated: false })}
             renderItem={({ item }) =>
               item.role === 'user' ? (
                 <View style={[styles.bubble, styles.userBubble]}>
@@ -95,7 +95,7 @@ export function ChatScreen() {
                   <ThemedText>{item.text || '…'}</ThemedText>
                   {item.sources?.map((source) => (
                     <ThemedText key={source.id} type="small" themeColor="textSecondary" style={styles.source}>
-                      [{source.reference}] {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
+                      {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
                     </ThemedText>
                   ))}
                 </ThemedView>
@@ -151,7 +151,7 @@ export function ChatScreen() {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   container: { flex: 1, flexDirection: 'row', justifyContent: 'center' },
-  safeArea: { flex: 1, maxWidth: MaxContentWidth },
+  safeArea: { flex: 1, maxWidth: MaxContentWidth, paddingBottom: BottomTabInset },
   header: {
     flexDirection: 'row',
     alignItems: 'center',

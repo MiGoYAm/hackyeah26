@@ -53,7 +53,8 @@
             "assets/offline/rag/knowledge_pl.db"
           ]
         }
-      ]
+      ],
+      "@maplibre/maplibre-react-native"
     ],
     "experiments": {
       "typedRoutes": true,

@@ -1,6 +1,6 @@
 const { getDefaultConfig } = require('expo/metro-config');
 
 const config = getDefaultConfig(__dirname);
-config.resolver.assetExts.push('db', 'pte', 'tokenizer');
+config.resolver.assetExts.push('db', 'pte', 'tokenizer', 'md', 'geojson');
 
 module.exports = config;
