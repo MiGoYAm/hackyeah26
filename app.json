@@ -39,7 +39,8 @@
         "expo-build-properties",
         {
           "ios": {
-            "deploymentTarget": "17.0"
+            "deploymentTarget": "17.0",
+            "enableSceneSupport": true
           },
           "android": {
             "minSdkVersion": 26
@@ -54,7 +55,14 @@
           ]
         }
       ],
-      "@bacons/apple-targets"
+      "@bacons/apple-targets",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Zezwól na mikrofon, aby podyktować pytanie asystentowi bezpieczeństwa.",
+          "speechRecognitionPermission": "Zezwól na rozpoznawanie mowy, aby zamienić podyktowane pytanie na tekst."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
