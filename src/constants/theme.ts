@@ -9,18 +9,23 @@ import { Platform } from 'react-native';
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    text: '#1C1517',
+    background: '#FBF9F8',
+    backgroundElement: '#F1E7E8',
+    backgroundSelected: '#E6D7D9',
+    textSecondary: '#6B5F62',
+    accent: '#D4213D',
+    onAccent: '#FBF9F8',
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    text: '#FBF9F8',
+    background: '#151112',
+    backgroundElement: '#2A2123',
+    backgroundSelected: '#3B2F32',
+    textSecondary: '#B5A9AC',
+    // Slightly lighter than in light mode so links stay readable on the dark background.
+    accent: '#E23A54',
+    onAccent: '#FBF9F8',
   },
 } as const;
 

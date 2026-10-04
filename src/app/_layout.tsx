@@ -11,13 +11,25 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const theme = useTheme();
+  const navigation = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider
+      value={{
+        ...navigation,
+        colors: {
+          ...navigation.colors,
+          primary: theme.accent,
+          background: theme.background,
+          card: theme.background,
+          text: theme.text,
+        },
+      }}>
       <AnimatedSplashOverlay />
       <NativeTabs
         backgroundColor={theme.background}
         indicatorColor={theme.backgroundElement}
-        labelStyle={{ selected: { color: theme.text } }}>
+        tintColor={theme.accent}
+        labelStyle={{ selected: { color: theme.accent } }}>
         <NativeTabs.Trigger name="index">
           <NativeTabs.Trigger.Label>Asystent</NativeTabs.Trigger.Label>
           <NativeTabs.Trigger.Icon sf="bubble.left.and.bubble.right" md="chat" />

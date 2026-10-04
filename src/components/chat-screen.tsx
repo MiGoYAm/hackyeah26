@@ -20,9 +20,6 @@ import { useTheme } from '@/hooks/use-theme';
 import { useKnowledgeChat, type ChatMessage } from '@/hooks/use-knowledge-chat';
 import { useVoiceInput } from '@/hooks/use-voice-input';
 
-const ACCENT = '#3c87f7';
-const DANGER = '#d03b3b';
-
 export function ChatScreen() {
   const theme = useTheme();
   const chat = useKnowledgeChat();
@@ -60,21 +57,14 @@ export function ChatScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
-          <ThemedText type="smallBold">Asystent bezpieczeństwa</ThemedText>
-          <Pressable onPress={() => {
-            cancelVoice();
-            setInput('');
-            chat.reset();
-          }} disabled={isBusy} accessibilityRole="button" hitSlop={8}>
-            <ThemedText type="small" themeColor="textSecondary">
-              Nowa rozmowa
-            </ThemedText>
-          </Pressable>
+          <ThemedText style={styles.title} accessibilityRole="header">
+            Asystent bezpieczeństwa
+          </ThemedText>
         </View>
 
         {!isReady && !error && (
           <View style={styles.status}>
-            <ActivityIndicator />
+            <ActivityIndicator color={theme.accent} />
             <ThemedText type="small" themeColor="textSecondary">
               {downloadProgress < 100
                 ? `Pobieranie modelu: ${downloadProgress.toFixed(0)}%`
@@ -85,7 +75,7 @@ export function ChatScreen() {
 
         {error && (
           <View style={styles.status}>
-            <ThemedText type="small" style={styles.error}>
+            <ThemedText type="small" themeColor="accent" style={styles.flex}>
               {error}
             </ThemedText>
           </View>
@@ -93,7 +83,7 @@ export function ChatScreen() {
 
         {isBusy && (
           <View style={styles.status} accessibilityLiveRegion="polite">
-            <ActivityIndicator />
+            <ActivityIndicator color={theme.accent} />
             <ThemedText type="small" themeColor="textSecondary">
               {phase === 'searching' ? 'Szukam w polskich poradnikach…' : 'Przygotowuję odpowiedź…'}
             </ThemedText>
@@ -113,14 +103,14 @@ export function ChatScreen() {
             onLayout={() => listRef.current?.scrollToEnd({ animated: false })}
             renderItem={({ item }) =>
               item.role === 'user' ? (
-                <View style={[styles.bubble, styles.userBubble]}>
-                  <ThemedText style={styles.userText}>{item.text}</ThemedText>
+                <View style={[styles.bubble, styles.userBubble, { backgroundColor: theme.accent }]}>
+                  <ThemedText themeColor="onAccent" style={styles.userText}>{item.text}</ThemedText>
                 </View>
               ) : (
                 <ThemedView type="backgroundElement" style={[styles.bubble, styles.assistantBubble]}>
                   <AssistantMarkdown text={item.text} />
                   {item.sources?.map((source) => (
-                    <ThemedText key={source.id} type="small" themeColor="textSecondary" style={styles.source}>
+                    <ThemedText key={source.id} themeColor="textSecondary" style={styles.source}>
                       {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
                     </ThemedText>
                   ))}
@@ -137,12 +127,25 @@ export function ChatScreen() {
           />
 
           <View style={styles.voiceComposer}>
-              <ThemedText type="smallBold" accessibilityLiveRegion="polite">
-                {voice.status === 'listening' ? 'Słucham. Powiedz, co się stało.'
-                  : voice.status === 'requesting' ? 'Włączam mikrofon…'
-                    : voice.status === 'stopping' ? 'Kończę dyktowanie…'
-                      : 'Powiedz, co się stało.'}
-              </ThemedText>
+              <View style={styles.composerHeader}>
+                <ThemedText type="smallBold" accessibilityLiveRegion="polite" style={styles.flex}>
+                  {voice.status === 'listening' ? 'Słucham. Powiedz, co się stało.'
+                    : voice.status === 'requesting' ? 'Włączam mikrofon…'
+                      : voice.status === 'stopping' ? 'Kończę dyktowanie…'
+                        : 'Powiedz, co się stało.'}
+                </ThemedText>
+                {messages.length > 0 ? (
+                  <Pressable onPress={() => {
+                    cancelVoice();
+                    setInput('');
+                    chat.reset();
+                  }} disabled={isBusy} accessibilityRole="button" hitSlop={8}>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      Nowa rozmowa
+                    </ThemedText>
+                  </Pressable>
+                ) : null}
+              </View>
               <TextInput
                 style={[styles.input, { color: theme.text, backgroundColor: theme.backgroundElement }]}
                 value={input}
@@ -154,23 +157,23 @@ export function ChatScreen() {
                 accessibilityLabel="Pytanie do asystenta"
                 multiline
               />
-              {voice.error ? <ThemedText type="small" style={styles.voiceError}>{voice.error}</ThemedText> : null}
+              {voice.error ? <ThemedText type="small" themeColor="accent">{voice.error}</ThemedText> : null}
               {voice.needsSettings ? (
                 <Pressable onPress={() => { void Linking.openSettings(); }} accessibilityRole="button" style={styles.secondaryButton}>
                   <ThemedText type="smallBold">Otwórz ustawienia</ThemedText>
                 </Pressable>
               ) : null}
               <Pressable
-                style={[styles.voiceButton, !canSend && styles.buttonDisabled]}
+                style={[styles.sendButton, { backgroundColor: theme.accent }, !canSend && styles.buttonDisabled]}
                 onPress={handleSend}
                 disabled={!canSend}
                 accessibilityRole="button"
                 accessibilityLabel="Wyślij pytanie">
-                <ThemedText type="smallBold" style={styles.buttonText}>Wyślij</ThemedText>
+                <ThemedText themeColor="onAccent" style={styles.buttonText}>Wyślij</ThemedText>
               </Pressable>
               {isBusy ? (
-                <Pressable style={[styles.button, styles.stopButton]} onPress={chat.stop} accessibilityRole="button">
-                  <ThemedText type="smallBold" style={styles.buttonText}>Zatrzymaj odpowiedź</ThemedText>
+                <Pressable style={[styles.stopButton, { borderColor: theme.accent }]} onPress={chat.stop} accessibilityRole="button">
+                  <ThemedText themeColor="accent" style={styles.buttonText}>Zatrzymaj odpowiedź</ThemedText>
                 </Pressable>
               ) : null}
             </View>
@@ -185,12 +188,12 @@ const styles = StyleSheet.create({
   container: { flex: 1, flexDirection: 'row', justifyContent: 'center' },
   safeArea: { flex: 1, maxWidth: MaxContentWidth, paddingBottom: BottomTabInset },
   header: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.two,
+    paddingTop: Spacing.three,
+    paddingBottom: Spacing.two,
   },
+  title: { fontSize: 18, lineHeight: 24, fontWeight: 700 },
   status: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -198,45 +201,44 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.two,
   },
-  error: { flex: 1, color: DANGER },
-  list: { flexGrow: 1, padding: Spacing.three, gap: Spacing.two },
+  list: { flexGrow: 1, padding: Spacing.three, gap: 14 },
   empty: { textAlign: 'center', marginTop: Spacing.five },
   bubble: {
     maxWidth: '85%',
     paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.two,
-    borderRadius: Spacing.three,
+    paddingVertical: 12,
+    borderRadius: 18,
   },
-  userBubble: { alignSelf: 'flex-end', backgroundColor: ACCENT },
+  userBubble: { alignSelf: 'flex-end' },
   assistantBubble: { alignSelf: 'flex-start', width: '85%' },
-  userText: { color: '#ffffff' },
-  source: { marginTop: Spacing.two },
-  voiceError: { color: DANGER },
+  userText: { fontSize: 17, lineHeight: 26, fontWeight: 600 },
+  source: { marginTop: Spacing.two, fontSize: 15, lineHeight: 22, fontWeight: 400 },
   voiceComposer: { padding: Spacing.three, gap: Spacing.two },
-  voiceButton: {
-    minHeight: 64,
+  composerHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
+  sendButton: {
+    minHeight: 56,
     alignItems: 'center',
     justifyContent: 'center',
     padding: Spacing.three,
-    borderRadius: Spacing.three,
-    backgroundColor: ACCENT,
+    borderRadius: 18,
   },
   secondaryButton: { minHeight: 44, justifyContent: 'center', alignItems: 'center' },
   input: {
     minHeight: 72,
     maxHeight: 120,
-    fontSize: 16,
+    fontSize: 17,
     paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.two,
-    borderRadius: Spacing.four,
+    paddingVertical: 12,
+    borderRadius: 18,
   },
-  button: {
+  stopButton: {
+    minHeight: 48,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.two,
-    borderRadius: Spacing.four,
-    backgroundColor: ACCENT,
+    borderRadius: 18,
+    borderWidth: 1.5,
   },
-  stopButton: { backgroundColor: DANGER },
   buttonDisabled: { opacity: 0.4 },
-  buttonText: { color: '#ffffff' },
+  buttonText: { fontSize: 16, lineHeight: 22, fontWeight: 700 },
 });

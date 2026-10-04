@@ -23,7 +23,7 @@ export function AssistantMarkdown({ text }: { text: string }) {
     borderRadius: Spacing.one,
   };
   const styles = StyleSheet.create({
-    body: { color: theme.text, fontSize: 16, lineHeight: 24 },
+    body: { color: theme.text, fontSize: 17, lineHeight: 26 },
     paragraph: { marginTop: Spacing.one, marginBottom: Spacing.one },
     textgroup: { flexShrink: 1 },
     heading1: { ...heading, fontSize: 24, lineHeight: 32 },
@@ -46,7 +46,7 @@ export function AssistantMarkdown({ text }: { text: string }) {
       marginVertical: Spacing.one,
       paddingHorizontal: Spacing.two,
     },
-    link: { color: '#3c87f7' },
+    link: { color: theme.accent },
     hr: { backgroundColor: theme.textSecondary, marginVertical: Spacing.two },
     table: { borderColor: theme.textSecondary, marginVertical: Spacing.one },
     tr: { borderColor: theme.textSecondary },
