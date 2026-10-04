@@ -16,7 +16,7 @@ struct AssistantChatControl: ControlWidget {
                 Label("Asystent", systemImage: "bubble.left.and.bubble.right.fill")
             }
         }
-        .displayName("Asystent bezpieczeństwa")
+        .displayName("mKryzys")
         .description("Otwórz czat z asystentem bezpieczeństwa.")
     }
 }

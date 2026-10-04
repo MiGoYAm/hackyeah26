@@ -1,6 +1,6 @@
 # Przycisk asystenta na iOS
 
-Na iOS 18 lub nowszym przycisk "Asystent bezpieczeństwa" można dodać
+Na iOS 18 lub nowszym przycisk "mKryzys" można dodać
 w miejsce latarki lub aparatu na ekranie blokady oraz do Centrum sterowania.
 Otwiera czat przez `myapp:///chat` i od razu uruchamia dyktowanie po polsku.
 Dyktowanie uruchamia się także przy zwykłym starcie aplikacji. Można robić
@@ -41,10 +41,10 @@ Użytkownik później potwierdził działanie dyktowania. Emulator Androida nie 
 
 Po zainstalowaniu nowego buildu przytrzymaj ekran blokady, wybierz Dostosuj,
 a następnie Ekran blokady. Usuń latarkę lub aparat przyciskiem minus,
-naciśnij plus i wybierz "Asystent bezpieczeństwa".
+naciśnij plus i wybierz "mKryzys".
 
 W Centrum sterowania wejdź w edycję, wybierz Dodaj narzędzie sterowania
-i znajdź "Asystent bezpieczeństwa".
+i znajdź "mKryzys".
 
 ## Implementacja i build
 

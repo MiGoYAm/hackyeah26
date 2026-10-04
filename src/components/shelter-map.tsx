@@ -161,14 +161,17 @@ export function ShelterMap() {
             );
           })}
         </View>
-        <ThemedView style={styles.note}>
-          {!shelters && !failed && <ActivityIndicator size="small" />}
-          <ThemedText type="small" themeColor="textSecondary" style={styles.flex}>
-            {failed
-              ? 'Nie udało się wczytać punktów.'
-              : 'Dane z OpenStreetMap, nie z oficjalnej ewidencji schronów. Bunkry to głównie historyczne fortyfikacje.'}
-          </ThemedText>
-        </ThemedView>
+        {(!shelters || failed) && (
+          <ThemedView style={styles.note}>
+            {failed ? (
+              <ThemedText type="small" themeColor="textSecondary" style={styles.noteText}>
+                Nie udało się wczytać punktów.
+              </ThemedText>
+            ) : (
+              <ActivityIndicator size="small" />
+            )}
+          </ThemedView>
+        )}
       </SafeAreaView>
 
       {selected && selectedKind && (
@@ -222,6 +225,7 @@ const styles = StyleSheet.create({
   chipHidden: { opacity: 0.5 },
   dot: { width: 12, height: 12, borderRadius: 6 },
   note: {
+    alignSelf: 'flex-start',
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.two,
@@ -230,6 +234,7 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.two,
     borderRadius: Spacing.three,
   },
+  noteText: { flexShrink: 1 },
   bottom: {
     position: 'absolute',
     left: 0,

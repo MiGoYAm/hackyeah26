@@ -1,14 +1,9 @@
 import shelters from '@/data/survival/shelters-osm-pl-all.geojson';
 import { readBundledText } from '@/services/bundled-text';
 
-// Drawn in this order, so the few real shelters end up on top of the many bunkers.
+// Drawn in this order, so the few real shelters end up on top of the assembly points.
+// The data also holds bunkers; they are mostly historical fortifications and are not shown.
 export const SHELTER_KINDS = [
-  {
-    kind: 'bunker',
-    label: 'Bunkier',
-    color: '#6b7280',
-    note: 'Bunkier, najczęściej historyczna fortyfikacja. Zwykle nie nadaje się na schronienie.',
-  },
   {
     kind: 'assembly_point',
     label: 'Miejsce zbiórki',

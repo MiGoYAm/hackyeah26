@@ -58,7 +58,7 @@ export function ChatScreen() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <ThemedText style={styles.title} accessibilityRole="header">
-            Asystent bezpieczeństwa
+            mKryzys
           </ThemedText>
           {messages.length > 0 ? (
             <Pressable onPress={() => {
