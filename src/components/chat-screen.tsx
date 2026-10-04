@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   FlatList,
   KeyboardAvoidingView,
+  Platform,
   Pressable,
   StyleSheet,
   TextInput,
@@ -15,10 +16,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AssistantMarkdown } from '@/components/assistant-markdown';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { TypingDots } from '@/components/typing-dots';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { useKnowledgeChat, type ChatMessage } from '@/hooks/use-knowledge-chat';
 import { useVoiceInput } from '@/hooks/use-voice-input';
+
+// On Android the tab bar already sits above the system navigation bar, so a bottom
+// inset here would only leave a gap under the input.
+const SAFE_EDGES = Platform.OS === 'android' ? (['top', 'left', 'right'] as const) : undefined;
 
 export function ChatScreen() {
   const theme = useTheme();
@@ -55,7 +61,7 @@ export function ChatScreen() {
 
   return (
     <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea} edges={SAFE_EDGES}>
         <View style={styles.header}>
           <ThemedText style={styles.title} accessibilityRole="header">
             mKryzys
@@ -66,7 +72,7 @@ export function ChatScreen() {
               setInput('');
               chat.reset();
             }} disabled={isBusy} accessibilityRole="button" hitSlop={8}>
-              <ThemedText type="small" themeColor="textSecondary">
+              <ThemedText type="smallBold" themeColor="accent">
                 Nowa rozmowa
               </ThemedText>
             </Pressable>
@@ -117,9 +123,13 @@ export function ChatScreen() {
                 <View style={[styles.bubble, styles.userBubble, { backgroundColor: theme.accent }]}>
                   <ThemedText themeColor="onAccent" style={styles.userText}>{item.text}</ThemedText>
                 </View>
-              ) : (
-                <ThemedView type="backgroundElement" style={[styles.bubble, styles.assistantBubble]}>
+              ) : item.text || !isBusy ? (
+                <ThemedView type="backgroundAnswer" style={[styles.bubble, styles.assistantBubble]}>
                   <AssistantMarkdown text={item.text} />
+                </ThemedView>
+              ) : (
+                <ThemedView type="backgroundAnswer" style={[styles.bubble, styles.typingBubble]}>
+                  <TypingDots />
                 </ThemedView>
               )
             }
@@ -145,7 +155,7 @@ export function ChatScreen() {
                 <ThemedText type="smallBold">Otwórz ustawienia</ThemedText>
               </Pressable>
             ) : null}
-            <View style={[styles.inputRow, { backgroundColor: theme.backgroundElement }]}>
+            <View style={[styles.inputRow, { borderColor: theme.backgroundSelected }]}>
               <TextInput
                 style={[styles.input, { color: theme.text }]}
                 value={input}
@@ -158,12 +168,12 @@ export function ChatScreen() {
                 multiline
               />
               <Pressable
-                style={[styles.sendButton, { backgroundColor: theme.accent }, !isBusy && !canSend && styles.buttonDisabled]}
+                style={[styles.sendButton, { backgroundColor: theme.backgroundElement }, !isBusy && !canSend && styles.buttonDisabled]}
                 onPress={isBusy ? chat.stop : handleSend}
                 disabled={!isBusy && !canSend}
                 accessibilityRole="button"
                 accessibilityLabel={isBusy ? 'Zatrzymaj odpowiedź' : 'Wyślij pytanie'}>
-                <ThemedText themeColor="onAccent" style={isBusy ? styles.stopIcon : styles.sendIcon}>
+                <ThemedText themeColor="accent" style={isBusy ? styles.stopIcon : styles.sendIcon}>
                   {isBusy ? '■' : '↑'}
                 </ThemedText>
               </Pressable>
@@ -206,6 +216,7 @@ const styles = StyleSheet.create({
   },
   userBubble: { alignSelf: 'flex-end' },
   assistantBubble: { alignSelf: 'flex-start', width: '85%' },
+  typingBubble: { alignSelf: 'flex-start' },
   userText: { fontSize: 15, lineHeight: 21, fontWeight: 600 },
   composer: { paddingHorizontal: Spacing.three, paddingVertical: Spacing.two, gap: Spacing.one },
   secondaryButton: { minHeight: 40, justifyContent: 'center', alignItems: 'center' },
@@ -216,7 +227,8 @@ const styles = StyleSheet.create({
     paddingLeft: 14,
     paddingRight: 6,
     paddingVertical: 6,
-    borderRadius: 24,
+    borderRadius: 12,
+    borderWidth: 1,
   },
   input: {
     flex: 1,

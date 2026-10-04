@@ -30,7 +30,7 @@ export default function RootLayout() {
       <AnimatedSplashOverlay />
       <NativeTabs
         backgroundColor={theme.background}
-        indicatorColor={theme.backgroundElement}
+        disableIndicator
         tintColor={theme.accent}
         labelStyle={{ selected: { color: theme.accent } }}>
         <NativeTabs.Trigger name="index">
