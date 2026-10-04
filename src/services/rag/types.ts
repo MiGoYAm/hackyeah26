@@ -15,9 +15,6 @@ export type Source = {
 // A source as the model reads it: `text` is the matched fragment, `passage` the page or section around it.
 export type SourcePassage = Source & { passage: string };
 
-// The number the answer uses for this source, e.g. [2].
-export type CitedSource = Source & { reference: number };
-
 export type ConversationTurn = { role: 'user' | 'assistant'; text: string };
 
 export type ChatPhase = 'preparing' | 'ready' | 'searching' | 'generating' | 'error';

@@ -2,17 +2,17 @@ import { File } from 'expo-file-system';
 import { llm, nlp, wrapAsync, type LLMModel } from 'react-native-executorch';
 import { scheduleOnRN } from 'react-native-worklets';
 
-import { dropUnknownCitations, finalizeAnswer, NO_ANSWER, repetitionStart } from './answer';
-import type { CitedSource, SourcePassage } from './types';
+import { finalizeAnswer, NO_ANSWER, reachedLimit, repetitionStart } from './answer';
+import type { Source, SourcePassage } from './types';
 
 const MAX_NEW_TOKENS = 1024;
 
 const SYSTEM_PROMPT = `Jesteś asystentem bezpieczeństwa. Odpowiadasz po polsku wyłącznie na podstawie fragmentów oficjalnych poradników podanych w <zrodla>.
-Odpowiedz na pytanie najwyżej trzema krótkimi zdaniami i podaj numer źródła, np. [1].
+Odpowiedz krótko i konkretnie, własnymi słowami, najwyżej trzema zdaniami.
 Jeżeli źródła nie zawierają odpowiedzi, na przykład aktualnych alertów albo adresów schronów, napisz: ${NO_ANSWER}`;
 
 // With the question as the last line, the model often answered by copying the <zrodla> block.
-const REMINDER = 'Odpowiedz tylko na to pytanie, najwyżej trzema krótkimi zdaniami, na podstawie źródeł powyżej.';
+const REMINDER = 'Odpowiedz tylko na to pytanie, krótko i konkretnie, najwyżej trzema zdaniami.';
 
 function ask(sources: string, question: string, earlier: string[]): string {
   const asked = earlier.length ? `Wcześniejsze pytania: ${earlier.join(' ')}\n` : '';
@@ -27,19 +27,23 @@ function runGeneration(
 ): string {
   'worklet';
   let response = '';
-  let looping = false;
+  let done = false;
   runner.reset();
   // Temperature 0 picks the likeliest token, so a question always gets the same answer.
   runner.generate(prompt, { temperature: 0, maxNewTokens: MAX_NEW_TOKENS }, (token) => {
-    if (looping || stopTokens.includes(token)) return;
+    if (done || stopTokens.includes(token)) return;
     response += token;
     // Greedy decoding can repeat itself until the token limit.
     if (repetitionStart(response) !== -1) {
-      looping = true;
+      done = true;
       runner.stop();
       return;
     }
     scheduleOnRN(onToken, token);
+    if (reachedLimit(response)) {
+      done = true;
+      runner.stop();
+    }
   });
   return response;
 }
@@ -67,7 +71,7 @@ export async function createKnowledgeRunner(config: LLMModel) {
     'worklet';
     return tokenizer.encode(text).length;
   });
-  let pending: Promise<{ text: string; sources: CitedSource[] }> | undefined;
+  let pending: Promise<{ text: string; sources: Source[] }> | undefined;
   let disposed = false;
 
   async function generate(
@@ -77,7 +81,10 @@ export async function createKnowledgeRunner(config: LLMModel) {
     signal: AbortSignal,
     onToken: (token: string) => void,
   ) {
-    const context = [...sources];
+    // The model works through every source it is given, which makes answers long and mixes
+    // topics, so it gets the best one. The second joins only when it matches the question's
+    // meaning at least as well: the first then leads on its keyword bonus alone.
+    const context = sources.slice(0, sources[1]?.similarity >= sources[0].similarity ? 2 : 1);
     // This many of the best sources are given as whole passages, the rest as their matched fragment.
     let whole = context.length;
     const maxTokens = runner.getKVCacheState().maxSeqLen - MAX_NEW_TOKENS - 16;
@@ -103,14 +110,10 @@ export async function createKnowledgeRunner(config: LLMModel) {
     const stop = () => runner.stop();
     signal.addEventListener('abort', stop, { once: true });
     try {
-      const answer = finalizeAnswer(await generateAsync(runner, prompt, tokenizerConfig.stopTokens, onToken));
+      const text = finalizeAnswer(await generateAsync(runner, prompt, tokenizerConfig.stopTokens, onToken));
       if (signal.aborted) throw new Error('Odpowiedź została zatrzymana.');
-      const text = dropUnknownCitations(answer, context.length);
-      const cited = new Set(Array.from(text.matchAll(/\[(\d+)\]/g), (match) => Number(match[1])));
-      // Sources the answer does not cite, e.g. when it reports missing information, would imply support it lacks.
-      const used = context.map((source, index): CitedSource => ({ ...source, reference: index + 1 }))
-        .filter((source) => cited.has(source.reference));
-      return { text, sources: used };
+      // Listing sources under an answer that reports missing information would imply support it lacks.
+      return { text, sources: text.includes(NO_ANSWER) ? [] : context };
     } finally {
       signal.removeEventListener('abort', stop);
     }

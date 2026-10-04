@@ -5,9 +5,9 @@ import { cleanAnswer, NO_ANSWER } from '@/services/rag/answer';
 import { KnowledgeConversation } from '@/services/rag/conversation';
 import { acquireRetrieval } from '@/services/rag/retrieval';
 import { createKnowledgeRunner } from '@/services/rag/runner';
-import type { ChatPhase, CitedSource, ConversationTurn, Source } from '@/services/rag/types';
+import type { ChatPhase, ConversationTurn, Source } from '@/services/rag/types';
 
-export type ChatMessage = ConversationTurn & { id: string; sources?: CitedSource[]; interrupted?: boolean };
+export type ChatMessage = ConversationTurn & { id: string; sources?: Source[]; interrupted?: boolean };
 
 export function useKnowledgeChat() {
   const { resource, downloadProgress, downloadError } = useResourceDownload(models.llm.BIELIK_V3_1_5B.XNNPACK_8DA4W);

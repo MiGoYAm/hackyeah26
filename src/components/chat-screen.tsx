@@ -121,7 +121,7 @@ export function ChatScreen() {
                   <AssistantMarkdown text={item.text} />
                   {item.sources?.map((source) => (
                     <ThemedText key={source.id} type="small" themeColor="textSecondary" style={styles.source}>
-                      [{source.reference}] {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
+                      {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
                     </ThemedText>
                   ))}
                 </ThemedView>
