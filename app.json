@@ -9,11 +9,7 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.anonymous.my-app",
-      "infoPlist": {
-        "NSSpeechRecognitionUsageDescription": "Zezwól na rozpoznawanie mowy, aby zamienić podyktowane pytanie na tekst.",
-        "NSMicrophoneUsageDescription": "Zezwól na mikrofon, aby podyktować pytanie asystentowi bezpieczeństwa."
-      }
+      "bundleIdentifier": "com.anonymous.my-app"
     },
     "android": {
       "package": "com.anonymous.myapp",
@@ -22,10 +18,7 @@
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false,
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ]
+      "predictiveBackGestureEnabled": false
     },
     "web": {
       "output": "static",
@@ -78,18 +71,6 @@
     "extra": {
       "router": {},
       "eas": {
-        "build": {
-          "experimental": {
-            "ios": {
-              "appExtensions": [
-                {
-                  "bundleIdentifier": "com.anonymous.my-app.AssistantControl",
-                  "targetName": "AssistantControl"
-                }
-              ]
-            }
-          }
-        },
         "projectId": "b8a01acb-831d-48f4-b41f-c01d63607bf5"
       }
     },
