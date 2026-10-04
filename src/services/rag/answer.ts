@@ -1,3 +1,6 @@
+// Said by the app when the search finds nothing, and by the model when the sources lack the answer.
+export const NO_ANSWER = 'Nie znalazłem informacji na ten temat w polskich poradnikach.';
+
 const MIN_REPEATED_SENTENCE = 25;
 const REPEATED_TAIL = 80;
 

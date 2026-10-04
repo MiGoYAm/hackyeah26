@@ -3,8 +3,9 @@ import { open, type DB } from '@op-engineering/op-sqlite';
 import manifest from '../../../assets/offline/rag/manifest.json';
 import { prepareKnowledgeAssets } from './assets';
 import { PolishEmbeddings } from './embeddings';
+import { partOf, widenSources, type Fragment } from './passage';
 import { keywordExpression, selectSources } from './ranking';
-import type { Source } from './types';
+import type { Source, SourcePassage } from './types';
 
 function toSource(row: Record<string, unknown>): Source {
   const metadata = typeof row.metadata === 'string' ? JSON.parse(row.metadata) : undefined;
@@ -79,7 +80,7 @@ export async function createRetrieval() {
     }
     const loadedDb = db;
     return {
-      async search(question: string): Promise<Source[]> {
+      async search(question: string): Promise<SourcePassage[]> {
         const vector = await embeddings.embed(question);
         // The adapter's query() returns every row with its embedding. Only rows
         // above the threshold can be selected.
@@ -94,7 +95,19 @@ export async function createRetrieval() {
           'SELECT id FROM keywords WHERE keywords MATCH ? ORDER BY bm25(keywords) LIMIT ?',
           [expression, manifest.retrieval.keywordCandidates],
         ) : undefined;
-        return selectSources(results.rows.map(toSource), keywords?.rows.map((row) => String(row.id)) ?? [], manifest.retrieval);
+        const selected = selectSources(results.rows.map(toSource), keywords?.rows.map((row) => String(row.id)) ?? [], manifest.retrieval);
+        const parts = new Map<string, Fragment[]>();
+        for (const source of selected) {
+          const part = partOf(source.id);
+          if (parts.has(part)) continue;
+          // The build step writes fragments in reading order, so rowid restores it.
+          const fragments = await loadedDb.execute(
+            'SELECT id, document FROM vectors WHERE substr(id, 1, length(?)) = ? ORDER BY rowid',
+            [part, part],
+          );
+          parts.set(part, fragments.rows.map((row) => ({ id: String(row.id), document: String(row.document) })));
+        }
+        return widenSources(selected, parts);
       },
       async dispose() {
         await embeddings.unload();
