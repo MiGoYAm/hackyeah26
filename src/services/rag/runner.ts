@@ -3,7 +3,7 @@ import { llm, nlp, wrapAsync, type LLMModel } from 'react-native-executorch';
 import { scheduleOnRN } from 'react-native-worklets';
 
 import { finalizeAnswer, NO_ANSWER, reachedLimit, repetitionStart } from './answer';
-import type { Source, SourcePassage } from './types';
+import type { SourcePassage } from './types';
 
 const MAX_NEW_TOKENS = 1024;
 
@@ -71,7 +71,7 @@ export async function createKnowledgeRunner(config: LLMModel) {
     'worklet';
     return tokenizer.encode(text).length;
   });
-  let pending: Promise<{ text: string; sources: Source[] }> | undefined;
+  let pending: Promise<string> | undefined;
   let disposed = false;
 
   async function generate(
@@ -112,8 +112,7 @@ export async function createKnowledgeRunner(config: LLMModel) {
     try {
       const text = finalizeAnswer(await generateAsync(runner, prompt, tokenizerConfig.stopTokens, onToken));
       if (signal.aborted) throw new Error('Odpowiedź została zatrzymana.');
-      // Listing sources under an answer that reports missing information would imply support it lacks.
-      return { text, sources: text.includes(NO_ANSWER) ? [] : context };
+      return text;
     } finally {
       signal.removeEventListener('abort', stop);
     }

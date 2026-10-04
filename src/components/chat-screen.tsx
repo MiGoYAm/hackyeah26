@@ -60,6 +60,17 @@ export function ChatScreen() {
           <ThemedText style={styles.title} accessibilityRole="header">
             Asystent bezpieczeństwa
           </ThemedText>
+          {messages.length > 0 ? (
+            <Pressable onPress={() => {
+              cancelVoice();
+              setInput('');
+              chat.reset();
+            }} disabled={isBusy} accessibilityRole="button" hitSlop={8}>
+              <ThemedText type="small" themeColor="textSecondary">
+                Nowa rozmowa
+              </ThemedText>
+            </Pressable>
+          ) : null}
         </View>
 
         {!isReady && !error && (
@@ -109,11 +120,6 @@ export function ChatScreen() {
               ) : (
                 <ThemedView type="backgroundElement" style={[styles.bubble, styles.assistantBubble]}>
                   <AssistantMarkdown text={item.text} />
-                  {item.sources?.map((source) => (
-                    <ThemedText key={source.id} themeColor="textSecondary" style={styles.source}>
-                      {source.title}, {source.page ? `strona PDF ${source.page}` : source.publisher}
-                    </ThemedText>
-                  ))}
                 </ThemedView>
               )
             }
@@ -126,28 +132,22 @@ export function ChatScreen() {
             }
           />
 
-          <View style={styles.voiceComposer}>
-              <View style={styles.composerHeader}>
-                <ThemedText type="smallBold" accessibilityLiveRegion="polite" style={styles.flex}>
-                  {voice.status === 'listening' ? 'Słucham. Powiedz, co się stało.'
-                    : voice.status === 'requesting' ? 'Włączam mikrofon…'
-                      : voice.status === 'stopping' ? 'Kończę dyktowanie…'
-                        : 'Powiedz, co się stało.'}
-                </ThemedText>
-                {messages.length > 0 ? (
-                  <Pressable onPress={() => {
-                    cancelVoice();
-                    setInput('');
-                    chat.reset();
-                  }} disabled={isBusy} accessibilityRole="button" hitSlop={8}>
-                    <ThemedText type="small" themeColor="textSecondary">
-                      Nowa rozmowa
-                    </ThemedText>
-                  </Pressable>
-                ) : null}
-              </View>
+          <View style={styles.composer}>
+            {voice.status !== 'idle' ? (
+              <ThemedText type="small" themeColor="textSecondary" accessibilityLiveRegion="polite">
+                {voice.status === 'listening' ? 'Słucham. Powiedz, co się stało.'
+                  : voice.status === 'requesting' ? 'Włączam mikrofon…' : 'Kończę dyktowanie…'}
+              </ThemedText>
+            ) : null}
+            {voice.error ? <ThemedText type="small" themeColor="accent">{voice.error}</ThemedText> : null}
+            {voice.needsSettings ? (
+              <Pressable onPress={() => { void Linking.openSettings(); }} accessibilityRole="button" style={styles.secondaryButton}>
+                <ThemedText type="smallBold">Otwórz ustawienia</ThemedText>
+              </Pressable>
+            ) : null}
+            <View style={[styles.inputRow, { backgroundColor: theme.backgroundElement }]}>
               <TextInput
-                style={[styles.input, { color: theme.text, backgroundColor: theme.backgroundElement }]}
+                style={[styles.input, { color: theme.text }]}
                 value={input}
                 onChangeText={setInput}
                 onFocus={cancelVoice}
@@ -157,26 +157,18 @@ export function ChatScreen() {
                 accessibilityLabel="Pytanie do asystenta"
                 multiline
               />
-              {voice.error ? <ThemedText type="small" themeColor="accent">{voice.error}</ThemedText> : null}
-              {voice.needsSettings ? (
-                <Pressable onPress={() => { void Linking.openSettings(); }} accessibilityRole="button" style={styles.secondaryButton}>
-                  <ThemedText type="smallBold">Otwórz ustawienia</ThemedText>
-                </Pressable>
-              ) : null}
               <Pressable
-                style={[styles.sendButton, { backgroundColor: theme.accent }, !canSend && styles.buttonDisabled]}
-                onPress={handleSend}
-                disabled={!canSend}
+                style={[styles.sendButton, { backgroundColor: theme.accent }, !isBusy && !canSend && styles.buttonDisabled]}
+                onPress={isBusy ? chat.stop : handleSend}
+                disabled={!isBusy && !canSend}
                 accessibilityRole="button"
-                accessibilityLabel="Wyślij pytanie">
-                <ThemedText themeColor="onAccent" style={styles.buttonText}>Wyślij</ThemedText>
+                accessibilityLabel={isBusy ? 'Zatrzymaj odpowiedź' : 'Wyślij pytanie'}>
+                <ThemedText themeColor="onAccent" style={isBusy ? styles.stopIcon : styles.sendIcon}>
+                  {isBusy ? '■' : '↑'}
+                </ThemedText>
               </Pressable>
-              {isBusy ? (
-                <Pressable style={[styles.stopButton, { borderColor: theme.accent }]} onPress={chat.stop} accessibilityRole="button">
-                  <ThemedText themeColor="accent" style={styles.buttonText}>Zatrzymaj odpowiedź</ThemedText>
-                </Pressable>
-              ) : null}
             </View>
+          </View>
         </KeyboardAvoidingView>
       </SafeAreaView>
     </ThemedView>
@@ -188,57 +180,60 @@ const styles = StyleSheet.create({
   container: { flex: 1, flexDirection: 'row', justifyContent: 'center' },
   safeArea: { flex: 1, maxWidth: MaxContentWidth, paddingBottom: BottomTabInset },
   header: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: Spacing.two,
     paddingHorizontal: Spacing.three,
-    paddingTop: Spacing.three,
+    paddingTop: Spacing.two,
     paddingBottom: Spacing.two,
   },
-  title: { fontSize: 18, lineHeight: 24, fontWeight: 700 },
+  title: { flexShrink: 1, fontSize: 16, lineHeight: 22, fontWeight: 700 },
   status: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.two,
     paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.two,
+    paddingVertical: Spacing.one,
   },
-  list: { flexGrow: 1, padding: Spacing.three, gap: 14 },
-  empty: { textAlign: 'center', marginTop: Spacing.five },
+  list: { flexGrow: 1, paddingHorizontal: Spacing.three, paddingVertical: Spacing.two, gap: 10 },
+  empty: { textAlign: 'center', marginTop: Spacing.five, fontSize: 15, lineHeight: 22 },
   bubble: {
     maxWidth: '85%',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: 12,
-    borderRadius: 18,
+    paddingHorizontal: 14,
+    paddingVertical: 9,
+    borderRadius: 16,
   },
   userBubble: { alignSelf: 'flex-end' },
   assistantBubble: { alignSelf: 'flex-start', width: '85%' },
-  userText: { fontSize: 17, lineHeight: 26, fontWeight: 600 },
-  source: { marginTop: Spacing.two, fontSize: 15, lineHeight: 22, fontWeight: 400 },
-  voiceComposer: { padding: Spacing.three, gap: Spacing.two },
-  composerHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
-  sendButton: {
-    minHeight: 56,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: Spacing.three,
-    borderRadius: 18,
+  userText: { fontSize: 15, lineHeight: 21, fontWeight: 600 },
+  composer: { paddingHorizontal: Spacing.three, paddingVertical: Spacing.two, gap: Spacing.one },
+  secondaryButton: { minHeight: 40, justifyContent: 'center', alignItems: 'center' },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: Spacing.two,
+    paddingLeft: 14,
+    paddingRight: 6,
+    paddingVertical: 6,
+    borderRadius: 24,
   },
-  secondaryButton: { minHeight: 44, justifyContent: 'center', alignItems: 'center' },
   input: {
-    minHeight: 72,
-    maxHeight: 120,
-    fontSize: 17,
-    paddingHorizontal: Spacing.three,
-    paddingVertical: 12,
-    borderRadius: 18,
+    flex: 1,
+    minHeight: 36,
+    maxHeight: 110,
+    fontSize: 15,
+    lineHeight: 21,
+    paddingVertical: 7,
   },
-  stopButton: {
-    minHeight: 48,
+  sendButton: {
+    width: 36,
+    height: 36,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: Spacing.three,
     borderRadius: 18,
-    borderWidth: 1.5,
   },
+  sendIcon: { fontSize: 20, lineHeight: 24, fontWeight: 700 },
+  stopIcon: { fontSize: 13, lineHeight: 18 },
   buttonDisabled: { opacity: 0.4 },
-  buttonText: { fontSize: 16, lineHeight: 22, fontWeight: 700 },
 });

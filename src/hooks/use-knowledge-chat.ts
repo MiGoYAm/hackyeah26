@@ -7,7 +7,7 @@ import { acquireRetrieval } from '@/services/rag/retrieval';
 import { createKnowledgeRunner } from '@/services/rag/runner';
 import type { ChatPhase, ConversationTurn, Source } from '@/services/rag/types';
 
-export type ChatMessage = ConversationTurn & { id: string; sources?: Source[]; interrupted?: boolean };
+export type ChatMessage = ConversationTurn & { id: string; interrupted?: boolean };
 
 export function useKnowledgeChat() {
   const { resource, downloadProgress, downloadError } = useResourceDownload(models.llm.BIELIK_V3_1_5B.XNNPACK_8DA4W);
@@ -78,21 +78,21 @@ export function useKnowledgeChat() {
         return true;
       }
       setPhase('generating');
-      const result = await model.generate(question, earlier, sources, controller.signal, (token) => {
+      const answer = await model.generate(question, earlier, sources, controller.signal, (token) => {
         if (!mounted.current || controller.signal.aborted || generationFinished) return;
         streamed += token;
         update({ text: cleanAnswer(streamed) });
       });
       generationFinished = true;
       // Final text comes from native generation, even if a token callback is delayed.
-      update({ text: result.text, sources: result.sources });
+      update({ text: answer });
       return true;
     } catch (error) {
-      if (controller.signal.aborted) update({ text: cleanAnswer(streamed) || 'Odpowiedź została zatrzymana.', interrupted: true, sources: undefined });
+      if (controller.signal.aborted) update({ text: cleanAnswer(streamed) || 'Odpowiedź została zatrzymana.', interrupted: true });
       else {
         const message = error instanceof Error ? error.message : String(error);
         if (mounted.current) setSendError(message);
-        update({ text: 'Nie udało się przygotować odpowiedzi. Spróbuj ponownie.', sources: undefined });
+        update({ text: 'Nie udało się przygotować odpowiedzi. Spróbuj ponownie.' });
       }
       return false;
     } finally {

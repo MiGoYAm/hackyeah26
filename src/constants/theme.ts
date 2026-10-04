@@ -1,5 +1,5 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
+ * Below are the colors that are used in the app.
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
@@ -7,29 +7,20 @@ import '@/global.css';
 
 import { Platform } from 'react-native';
 
+// The app has one, light look: white with the red of the Polish flag.
 export const Colors = {
   light: {
     text: '#1C1517',
-    background: '#FBF9F8',
-    backgroundElement: '#F1E7E8',
-    backgroundSelected: '#E6D7D9',
+    background: '#FFFFFF',
+    backgroundElement: '#EADFE0',
+    backgroundSelected: '#DDCDCF',
     textSecondary: '#6B5F62',
     accent: '#D4213D',
-    onAccent: '#FBF9F8',
-  },
-  dark: {
-    text: '#FBF9F8',
-    background: '#151112',
-    backgroundElement: '#2A2123',
-    backgroundSelected: '#3B2F32',
-    textSecondary: '#B5A9AC',
-    // Slightly lighter than in light mode so links stay readable on the dark background.
-    accent: '#E23A54',
-    onAccent: '#FBF9F8',
+    onAccent: '#FFFFFF',
   },
 } as const;
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+export type ThemeColor = keyof typeof Colors.light;
 
 export const Fonts = Platform.select({
   ios: {
