@@ -61,4 +61,6 @@ export const Spacing = {
   six: 64,
 } as const;
 
+// Android lays tab screens out above the tab bar; on iOS the bar floats over them.
+export const BottomTabInset = Platform.select({ ios: 50 }) ?? 0;
 export const MaxContentWidth = 800;

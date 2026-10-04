@@ -1,0 +1,21 @@
+import type { PropsWithChildren } from 'react';
+import { StyleSheet } from 'react-native';
+
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { Spacing } from '@/constants/theme';
+
+export function NoticeScreen({ children }: PropsWithChildren) {
+  return (
+    <ThemedView style={styles.container}>
+      <ThemedText themeColor="textSecondary" style={styles.text}>
+        {children}
+      </ThemedText>
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: Spacing.four },
+  text: { textAlign: 'center' },
+});

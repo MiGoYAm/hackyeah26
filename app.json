@@ -55,6 +55,7 @@
           ]
         }
       ],
+      "@maplibre/maplibre-react-native",
       "@bacons/apple-targets",
       [
         "expo-speech-recognition",

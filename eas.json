@@ -4,6 +4,7 @@
   },
   "build": {
     "development": {
+      "node": "24.21.0",
       "developmentClient": true,
       "distribution": "internal",
       "android": {
@@ -11,6 +12,7 @@
       }
     },
     "preview": {
+      "node": "24.21.0",
       "distribution": "internal",
       "android": {
         "buildType": "apk",
