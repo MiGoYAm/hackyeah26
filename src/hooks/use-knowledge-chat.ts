@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { models, useModel, useResourceDownload } from 'react-native-executorch';
 
-import { cleanAnswer } from '@/services/rag/answer';
+import { cleanAnswer, NO_ANSWER } from '@/services/rag/answer';
 import { KnowledgeConversation } from '@/services/rag/conversation';
 import { acquireRetrieval } from '@/services/rag/retrieval';
 import { createKnowledgeRunner } from '@/services/rag/runner';
-import type { ChatPhase, CitedSource, ConversationTurn, Source } from '@/services/rag/types';
+import type { ChatPhase, ConversationTurn, Source } from '@/services/rag/types';
 
-export type ChatMessage = ConversationTurn & { id: string; sources?: CitedSource[]; interrupted?: boolean };
+export type ChatMessage = ConversationTurn & { id: string; sources?: Source[]; interrupted?: boolean };
 
 export function useKnowledgeChat() {
   const { resource, downloadProgress, downloadError } = useResourceDownload(models.llm.BIELIK_V3_1_5B.XNNPACK_8DA4W);
@@ -67,18 +67,18 @@ export function useKnowledgeChat() {
       setMessages((previous) => previous.map((message) => message.id === replyId ? { ...message, ...changes } : message));
     };
     try {
-      const { searchText, history } = conversation.current.prepareQuestion(question);
+      const { searchText, earlier } = conversation.current.prepareQuestion(question);
       const search = searchText === null ? Promise.resolve([]) : retrieval.search(searchText);
       pendingSearch.current = search;
       const sources = await search;
       pendingSearch.current = undefined;
       if (controller.signal.aborted) throw new Error('Odpowiedź została zatrzymana.');
       if (!sources.length) {
-        update({ text: 'Nie znalazłem informacji na ten temat w polskich poradnikach.' });
+        update({ text: NO_ANSWER });
         return true;
       }
       setPhase('generating');
-      const result = await model.generate(question, history, sources, controller.signal, (token) => {
+      const result = await model.generate(question, earlier, sources, controller.signal, (token) => {
         if (!mounted.current || controller.signal.aborted || generationFinished) return;
         streamed += token;
         update({ text: cleanAnswer(streamed) });
@@ -86,7 +86,6 @@ export function useKnowledgeChat() {
       generationFinished = true;
       // Final text comes from native generation, even if a token callback is delayed.
       update({ text: result.text, sources: result.sources });
-      conversation.current.rememberReply(question, result.text);
       return true;
     } catch (error) {
       if (controller.signal.aborted) update({ text: cleanAnswer(streamed) || 'Odpowiedź została zatrzymana.', interrupted: true, sources: undefined });

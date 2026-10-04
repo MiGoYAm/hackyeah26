@@ -1,5 +1,9 @@
+// Said by the app when the search finds nothing, and by the model when the sources lack the answer.
+export const NO_ANSWER = 'Nie znalazłem informacji na ten temat w polskich poradnikach.';
+
 const MIN_REPEATED_SENTENCE = 25;
 const REPEATED_TAIL = 80;
+const MAX_ANSWER_CHARS = 350;
 
 // The native runner exposes no repetition penalty, so a looping answer has to be
 // caught here. Returns the offset where repeated content starts, or -1.
@@ -27,31 +31,24 @@ export function repetitionStart(text: string): number {
   return second;
 }
 
-// The chat renders plain text, so Markdown from the model would show up as stray characters.
-export function cleanAnswer(text: string): string {
-  return text
-    .replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
-    .replace(/^[ \t]*[*•][ \t]+/gm, '- ')
-    .replace(/\*+|_{2,}|`+/g, '')
-    .replace(/[ \t]{2,}/g, ' ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+// The model ignores length limits given in the prompt, so past the limit the answer
+// stops at the next end of a sentence or a line.
+export function reachedLimit(text: string): boolean {
+  'worklet';
+  if (text.length < MAX_ANSWER_CHARS) return false;
+  // A line ending in a colon announces a list; stopping there would leave it empty.
+  if (/[^:\s]\s*\n\s*$/.test(text)) return true;
+  // A period after an abbreviation or a list number does not end a sentence.
+  const abbreviation = /(?:^|[\s(])(?:np|m\.in|tj|tzw|itd|itp|ok|godz|ul|nr|tel|pkt|art|wg|r|s|\d+)\.\s*$/i;
+  return /[.!?]\s*$/.test(text) && !abbreviation.test(text);
 }
 
-// A small model sometimes cites a source it was never given; drop that number, keep the advice.
-// Lists and ranges such as [1, 2] or [1-3] become [1][2][3], the only form the chat resolves.
-export function dropUnknownCitations(text: string, sourceCount: number): string {
+// Preserve Markdown and internal whitespace for both streamed and final replies.
+// Source numbers such as [1] are removed: the sources are listed under the answer.
+export function cleanAnswer(text: string): string {
   return text
-    .replace(/([ \t]*)\[(\d+(?:\s*[,;–-]\s*\d+)*)\]/g, (_, space: string, list: string) => {
-      const references = new Set<number>();
-      for (const part of list.split(/[,;]/)) {
-        const [first, last = first] = part.split(/[–-]/).map(Number);
-        for (let reference = Math.max(first, 1); reference <= Math.min(last, sourceCount); reference += 1) {
-          references.add(reference);
-        }
-      }
-      return references.size ? space + [...references].map((reference) => `[${reference}]`).join('') : '';
-    })
+    .replace(/^([ \t]*(?:[-*•]|\d+[.)])?[ \t]*)\[\d+(?:\s*[,;–-]\s*\d+)*\]:?[ \t]*/gm, '$1')
+    .replace(/[ \t]*\[\d+(?:\s*[,;–-]\s*\d+)*\]/g, '')
     .trim();
 }
 

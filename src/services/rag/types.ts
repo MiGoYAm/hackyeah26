@@ -12,8 +12,8 @@ export type Source = {
   similarity: number;
 };
 
-// The number the answer uses for this source, e.g. [2].
-export type CitedSource = Source & { reference: number };
+// A source as the model reads it: `text` is the matched fragment, `passage` the page or section around it.
+export type SourcePassage = Source & { passage: string };
 
 export type ConversationTurn = { role: 'user' | 'assistant'; text: string };
 

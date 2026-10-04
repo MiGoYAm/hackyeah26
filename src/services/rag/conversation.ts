@@ -1,5 +1,3 @@
-import type { ConversationTurn } from './types';
-
 const AIR_RAID_WORDS: Record<string, string> = {
   nalot: 'atak z powietrza', nalotu: 'ataku z powietrza', nalotem: 'atakiem z powietrza',
   nalocie: 'ataku z powietrza', naloty: 'ataki z powietrza', nalotow: 'ataków z powietrza',
@@ -49,29 +47,25 @@ function normalizeQuestion(question: string): string | null {
 export class KnowledgeConversation {
   private previousQuestion?: string;
   private previousFollowUp?: string;
-  private history: ConversationTurn[] = [];
 
   prepareQuestion(question: string) {
     const current = normalizeQuestion(question.trim());
     // An "A jak ..." prefix alone does not imply the same topic (e.g. cooking).
     const followUp = current !== null && isFollowUp(current);
     // "Dlaczego?" after "A gdzie się schować?" refers to that follow-up, not only to the topic.
-    const searchText = followUp && this.previousQuestion
-      ? [this.previousQuestion, this.previousFollowUp, current].filter(Boolean).join('\n') : current;
+    const earlier = followUp && this.previousQuestion
+      ? [this.previousQuestion, this.previousFollowUp].filter((asked): asked is string => !!asked) : [];
+    const searchText = current === null ? null : [...earlier, current].join('\n');
     // Remember the user's topic before retrieval, including turns with no sources.
     if (!followUp) this.previousQuestion = current ?? undefined;
     this.previousFollowUp = followUp ? current : undefined;
-    return { searchText, history: [...this.history] };
-  }
-
-  rememberReply(question: string, answer: string) {
-    this.history.push({ role: 'user', text: question }, { role: 'assistant', text: answer.replace(/\[\d+\]/g, '') });
-    this.history = this.history.slice(-6);
+    // The model is shown no earlier turns, whose answers it would read without their
+    // sources. A follow-up therefore carries the questions it points back at.
+    return { searchText, earlier };
   }
 
   reset() {
     this.previousQuestion = undefined;
     this.previousFollowUp = undefined;
-    this.history = [];
   }
 }
